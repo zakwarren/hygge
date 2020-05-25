@@ -3,6 +3,7 @@
   width: 50vh;
   height: 50vh;
   position: relative;
+  display: inline-block;
 }
 
 .Circle {
