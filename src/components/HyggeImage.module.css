@@ -1,0 +1,14 @@
+.HyggeImage {
+  padding: 2rem;
+  width: 50vh;
+  height: 50vh;
+  position: relative;
+}
+
+.Circle {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  background-color: #c4c4c4;
+  border-radius: 50%;
+}
