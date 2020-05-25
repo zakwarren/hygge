@@ -8,7 +8,15 @@ describe("<HyggeImage />", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<HyggeImage />);
+    wrapper = shallow(
+      <HyggeImage display={true} isExpanded={false} clicked={jest.fn} />
+    );
+  });
+
+  it("should not render anything if display is false", () => {
+    wrapper.setProps({ display: false });
+
+    expect(wrapper.get(0)).toBeNull();
   });
 
   it("should render a <div /> element with the HyggeImage class", () => {
@@ -16,6 +24,13 @@ describe("<HyggeImage />", () => {
 
     expect(div).toHaveLength(1);
     expect(div.hasClass(css.HyggeImage)).toEqual(true);
+  });
+
+  it("should render the <div /> element with the Expanded class when isExpanded is true", () => {
+    wrapper.setProps({ isExpanded: true });
+    const div = wrapper.find("div");
+
+    expect(div.hasClass(css.Expanded)).toEqual(true);
   });
 
   it("should render a <span /> element with the Circle class and default background color", () => {

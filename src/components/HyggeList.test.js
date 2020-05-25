@@ -7,10 +7,14 @@ import HyggeImage from "./HyggeImage";
 
 describe("<HyggeList />", () => {
   let wrapper;
-  const list = [{ id: 1 }, { id: 2 }];
+  const list = [
+    { id: 1, display: true, isExpanded: false },
+    { id: 2, display: true, isExpanded: false },
+  ];
+  const clickFn = jest.fn;
 
   beforeEach(() => {
-    wrapper = shallow(<HyggeList list={list} />);
+    wrapper = shallow(<HyggeList list={list} clickHygge={clickFn} />);
   });
 
   it("should render a <div /> element with the HyggeList class", () => {

@@ -4,6 +4,7 @@
   height: 50vh;
   position: relative;
   display: inline-block;
+  transition: all 0.3s ease;
 }
 
 .Circle {
@@ -12,4 +13,9 @@
   position: absolute;
   background-color: #c4c4c4;
   border-radius: 50%;
+}
+
+.Expanded {
+  width: 100vh;
+  height: 100vh;
 }

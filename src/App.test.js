@@ -2,7 +2,9 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import css from "./App.module.css";
+import logo from "./assets/snowflake.png";
 import App from "./App";
+import HyggeList from "./components/HyggeList";
 
 describe("<App />", () => {
   let wrapper;
@@ -23,5 +25,18 @@ describe("<App />", () => {
 
     expect(header).toHaveLength(1);
     expect(header.hasClass(css.Heading)).toEqual(true);
+  });
+
+  it("should render a <img /> element with the Logo class and correct src", () => {
+    const img = wrapper.find("img");
+
+    expect(img).toHaveLength(1);
+    expect(img.hasClass(css.Logo)).toEqual(true);
+    expect(img.prop("src")).toEqual(logo);
+    expect(img.prop("alt")).toEqual("Logo");
+  });
+
+  it("should render a <HyggeList /> element", () => {
+    expect(wrapper.find(HyggeList)).toHaveLength(1);
   });
 });
