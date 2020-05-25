@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/hygge/static/css/main.14346b24.chunk.css",
-    "main.js": "/hygge/static/js/main.20e6181f.chunk.js",
-    "main.js.map": "/hygge/static/js/main.20e6181f.chunk.js.map",
+    "main.css": "/hygge/static/css/main.1f4fc4d6.chunk.css",
+    "main.js": "/hygge/static/js/main.01fed74c.chunk.js",
+    "main.js.map": "/hygge/static/js/main.01fed74c.chunk.js.map",
     "runtime-main.js": "/hygge/static/js/runtime-main.c02cf71d.js",
     "runtime-main.js.map": "/hygge/static/js/runtime-main.c02cf71d.js.map",
     "static/js/2.888a5146.chunk.js": "/hygge/static/js/2.888a5146.chunk.js",
     "static/js/2.888a5146.chunk.js.map": "/hygge/static/js/2.888a5146.chunk.js.map",
     "index.html": "/hygge/index.html",
-    "precache-manifest.926295a97329adb248e9bfbbbfd93b57.js": "/hygge/precache-manifest.926295a97329adb248e9bfbbbfd93b57.js",
+    "precache-manifest.824f6e31800969019cf9f5de3ddcdd34.js": "/hygge/precache-manifest.824f6e31800969019cf9f5de3ddcdd34.js",
     "service-worker.js": "/hygge/service-worker.js",
-    "static/css/main.14346b24.chunk.css.map": "/hygge/static/css/main.14346b24.chunk.css.map",
+    "static/css/main.1f4fc4d6.chunk.css.map": "/hygge/static/css/main.1f4fc4d6.chunk.css.map",
     "static/js/2.888a5146.chunk.js.LICENSE.txt": "/hygge/static/js/2.888a5146.chunk.js.LICENSE.txt",
     "static/media/snowflake.png": "/hygge/static/media/snowflake.f29ec4cf.png"
   },
   "entrypoints": [
     "static/js/runtime-main.c02cf71d.js",
     "static/js/2.888a5146.chunk.js",
-    "static/css/main.14346b24.chunk.css",
-    "static/js/main.20e6181f.chunk.js"
+    "static/css/main.1f4fc4d6.chunk.css",
+    "static/js/main.01fed74c.chunk.js"
   ]
 }
