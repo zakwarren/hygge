@@ -13,12 +13,6 @@ describe("<HyggeImage />", () => {
     );
   });
 
-  it("should not render anything if display is false", () => {
-    wrapper.setProps({ display: false });
-
-    expect(wrapper.get(0)).toBeNull();
-  });
-
   it("should render a <div /> element with the HyggeImage class", () => {
     const div = wrapper.find("div");
 
@@ -31,6 +25,13 @@ describe("<HyggeImage />", () => {
     const div = wrapper.find("div");
 
     expect(div.hasClass(css.Expanded)).toEqual(true);
+  });
+
+  it("should render the <div /> element with the Shrunk class when display is false", () => {
+    wrapper.setProps({ display: false });
+    const div = wrapper.find("div");
+
+    expect(div.hasClass(css.Shrunk)).toEqual(true);
   });
 
   it("should render a <span /> element with the Circle class and default background color", () => {

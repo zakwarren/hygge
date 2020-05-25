@@ -4,30 +4,26 @@ import PropTypes from "prop-types";
 import css from "./HyggeImage.module.css";
 
 const HyggeImage = (props) => {
-  let render = null;
+  let instance = props.id ? props.id : 1;
+  const rgbValue = 216 - instance * 20;
+  const backgroundColor =
+    "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";
 
-  if (props.display) {
-    let instance = props.id ? props.id : 1;
-    const rgbValue = 216 - instance * 20;
-    const backgroundColor =
-      "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";
-
-    const classes = [css.HyggeImage];
-    if (props.isExpanded) {
-      classes.push(css.Expanded);
-    }
-
-    render = (
-      <div className={classes.join(" ")} onClick={props.clicked}>
-        <span
-          className={css.Circle}
-          style={{ backgroundColor: backgroundColor }}
-        ></span>
-      </div>
-    );
+  const classes = [css.HyggeImage];
+  if (props.isExpanded) {
+    classes.push(css.Expanded);
+  } else if (!props.display) {
+    classes.push(css.Shrunk);
   }
 
-  return render;
+  return (
+    <div className={classes.join(" ")} onClick={props.clicked}>
+      <span
+        className={css.Circle}
+        style={{ backgroundColor: backgroundColor }}
+      ></span>
+    </div>
+  );
 };
 
 HyggeImage.propTypes = {

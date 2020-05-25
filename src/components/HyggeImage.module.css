@@ -19,3 +19,8 @@
   width: 120vh;
   height: 120vh;
 }
+
+.Shrunk {
+  width: 0;
+  height: 0;
+}
