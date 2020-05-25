@@ -1,5 +1,6 @@
 {
   "name": "hygge",
+  "description": "Embrace a mood of coziness and comfortable conviviality with feelings of wellness and contentment",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
