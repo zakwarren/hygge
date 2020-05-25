@@ -7,6 +7,8 @@ together with loved ones.
 Now you can take a small part of that feeling with you wherever you go
 with this app. Embrace the coziness and contentment.
 
+Enjoy it at [Hygge](https://zakwarren.github.io/hygge/)
+
 ## How to Use
 
 You need [Node.js](https://nodejs.org) installed on your machine.
@@ -21,7 +23,14 @@ the dependencies using:
 npm install
 ```
 
-Once all the dependencies are successfully installed, run:
+Once all the dependencies are successfully installed, you can run
+the tests with:
+
+```bash
+npm test
+```
+
+You can run the development server with:
 
 ```bash
 npm start
