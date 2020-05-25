@@ -1,0 +1,27 @@
+{
+  "short_name": "Hygge",
+  "name": "Hygge",
+  "description": "Embrace a mood of coziness and comfortable conviviality with feelings of wellness and contentment",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#C4A589",
+  "background_color": "#D6CDC4"
+}
