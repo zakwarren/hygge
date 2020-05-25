@@ -13,6 +13,11 @@
   color: #c3a58966;
   font-size: 2rem;
   text-align: right;
+  transition: all 0.3s ease;
+}
+
+.Expanded {
+  margin-top: -20%;
 }
 
 .Logo {
@@ -31,5 +36,9 @@
 
   .Logo {
     right: 10%;
+  }
+
+  .Expanded {
+    margin-top: -10%;
   }
 }
