@@ -1,23 +1,23 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import css from "./App.module.css";
-import logo from "./assets/snowflake.png";
-import App from "./App";
-import HyggeList from "./components/HyggeList";
+import css from "./Hygge.module.css";
+import logo from "../assets/snowflake.png";
+import Hygge from "./Hygge";
+import HyggeList from "../components/HyggeList";
 
-describe("<App />", () => {
+describe("<Hygge />", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(<Hygge />);
   });
 
-  it("should render a <main /> element with the App class", () => {
+  it("should render a <main /> element with the Hygge class", () => {
     const main = wrapper.find("main");
 
     expect(main).toHaveLength(1);
-    expect(main.hasClass(css.App)).toEqual(true);
+    expect(main.hasClass(css.Hygge)).toEqual(true);
   });
 
   it("should render a <h1 /> element with the Heading class", () => {
