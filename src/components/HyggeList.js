@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import css from "./HyggeList.module.css";
 import HyggeImage from "./HyggeImage";
@@ -10,5 +11,9 @@ const HyggeList = (props) => (
     ))}
   </div>
 );
+
+HyggeList.propTypes = {
+  list: PropTypes.array.isRequired,
+};
 
 export default HyggeList;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import css from "./HyggeImage.module.css";
 
@@ -16,6 +17,10 @@ const HyggeImage = (props) => {
       ></span>
     </div>
   );
+};
+
+HyggeImage.propTypes = {
+  id: PropTypes.number,
 };
 
 export default HyggeImage;
