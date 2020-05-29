@@ -8,11 +8,12 @@
 }
 
 .Heading {
-  margin: 20% 5% 5% 5%;
+  margin: 20% -5% 5% 10%;
   width: 90%;
   color: #c3a58966;
   font-size: 2rem;
   text-align: right;
+  white-space: nowrap;
   transition: all 0.3s ease;
 }
 

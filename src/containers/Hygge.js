@@ -9,6 +9,8 @@ const Hygge = () => {
     { id: 1, display: true, isExpanded: false },
     { id: 2, display: true, isExpanded: false },
     { id: 3, display: true, isExpanded: false },
+    { id: 4, display: true, isExpanded: false },
+    { id: 5, display: true, isExpanded: false },
   ]);
   const [hasExpanded, setHasExpanded] = useState(false);
 
