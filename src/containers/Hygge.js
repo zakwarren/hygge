@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import css from "./Hygge.module.css";
 import logo from "../assets/snowflake.png";
-import { IMAGE_MAPPING } from "../assets/images/images";
+import { IMAGE_MAPPING } from "../shared/images";
 import HyggeList from "../components/HyggeList";
 
 const IMAGES = IMAGE_MAPPING.map((map) => {
