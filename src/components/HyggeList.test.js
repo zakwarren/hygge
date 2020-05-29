@@ -8,8 +8,20 @@ import HyggeImage from "./HyggeImage";
 describe("<HyggeList />", () => {
   let wrapper;
   const list = [
-    { id: 1, display: true, isExpanded: false },
-    { id: 2, display: true, isExpanded: false },
+    {
+      id: 1,
+      display: true,
+      isExpanded: false,
+      image: "test.png",
+      attribution: "Test",
+    },
+    {
+      id: 2,
+      display: true,
+      isExpanded: false,
+      image: "test2.png",
+      attribution: "Test 2",
+    },
   ];
   const clickFn = jest.fn;
 

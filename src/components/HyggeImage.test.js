@@ -9,7 +9,13 @@ describe("<HyggeImage />", () => {
 
   beforeEach(() => {
     wrapper = shallow(
-      <HyggeImage display={true} isExpanded={false} clicked={jest.fn} />
+      <HyggeImage
+        display={true}
+        isExpanded={false}
+        clicked={jest.fn}
+        image="test.png"
+        attribution="Test"
+      />
     );
   });
 
@@ -34,18 +40,21 @@ describe("<HyggeImage />", () => {
     expect(div.hasClass(css.Shrunk)).toEqual(true);
   });
 
-  it("should render a <span /> element with the Circle class and default background color", () => {
+  it("should render an <img /> element with the Circle class with correct src", () => {
+    const img = wrapper.find("img");
+
+    expect(img).toHaveLength(1);
+    expect(img.hasClass(css.Circle)).toEqual(true);
+    expect(img.prop("src")).toEqual("test.png");
+    expect(img.prop("alt")).toEqual("Test");
+  });
+
+  it("should decrement a <span /> element with the attribution text when expanded", () => {
+    wrapper.setProps({ isExpanded: true });
     const span = wrapper.find("span");
 
     expect(span).toHaveLength(1);
-    expect(span.hasClass(css.Circle)).toEqual(true);
-    expect(span.prop("style").backgroundColor).toEqual("rgb(196,196,196)");
-  });
-
-  it("should decrement the background color by 20 when id is 2", () => {
-    wrapper.setProps({ id: 2 });
-    const span = wrapper.find("span");
-
-    expect(span.prop("style").backgroundColor).toEqual("rgb(176,176,176)");
+    expect(span.hasClass(css.Attribution)).toEqual(true);
+    expect(span.text()).toEqual("Test");
   });
 });
