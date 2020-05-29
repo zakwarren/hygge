@@ -2,16 +2,15 @@ import React, { useState } from "react";
 
 import css from "./Hygge.module.css";
 import logo from "../assets/snowflake.png";
+import { IMAGE_MAPPING } from "../assets/images/images";
 import HyggeList from "../components/HyggeList";
 
+const IMAGES = IMAGE_MAPPING.map((map) => {
+  return { ...map, display: true, isExpanded: false };
+});
+
 const Hygge = () => {
-  const [hygges, setHygges] = useState([
-    { id: 1, display: true, isExpanded: false },
-    { id: 2, display: true, isExpanded: false },
-    { id: 3, display: true, isExpanded: false },
-    { id: 4, display: true, isExpanded: false },
-    { id: 5, display: true, isExpanded: false },
-  ]);
+  const [hygges, setHygges] = useState(IMAGES);
   const [hasExpanded, setHasExpanded] = useState(false);
 
   const clickHyggeHandler = (id) => {

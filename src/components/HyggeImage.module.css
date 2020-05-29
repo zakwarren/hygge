@@ -43,3 +43,11 @@
   width: 0;
   height: 0;
 }
+
+.Attribution {
+  width: 100%;
+  position: fixed;
+  bottom: 0.2rem;
+  right: 0.5rem;
+  text-align: right;
+}
