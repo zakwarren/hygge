@@ -15,8 +15,11 @@ const Menu = (props) => {
     classes.push(css.Open);
     content = (
       <>
-        <p>My hygge board</p>
-        <p>My collection</p>
+        {props.pages.map((p) => (
+          <p key={p.label} onClick={() => props.getPage(p.element)}>
+            {p.label}
+          </p>
+        ))}
         {props.canInstall ? <p onClick={props.install}>Install</p> : null}
       </>
     );
@@ -35,6 +38,8 @@ const Menu = (props) => {
 Menu.propTypes = {
   canInstall: PropTypes.bool.isRequired,
   install: PropTypes.func.isRequired,
+  pages: PropTypes.array.isRequired,
+  getPage: PropTypes.func.isRequired,
 };
 
 export default Menu;
