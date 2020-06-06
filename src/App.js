@@ -1,36 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import css from "./App.module.css";
+import useInstaller from "./hooks/useInstaller";
 import downloadIcon from "./assets/download.png";
-import Hygge from "./containers/Hygge";
+import Hygge from "./containers/Hygge/Hygge";
 
 const App = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
-
-  useEffect(() => {
-    window.addEventListener("beforeinstallprompt", getInstallPrompt);
-    return () => {
-      window.removeEventListener("beforeinstallprompt", getInstallPrompt);
-    };
-  }, []);
-
-  const getInstallPrompt = (event) => {
-    event.preventDefault();
-    setDeferredPrompt(event);
-    return false;
-  };
-
-  const promptForInstallHandler = () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      setDeferredPrompt(null);
-    }
-  };
+  const [canInstall, install] = useInstaller();
 
   let downloadBtn = null;
-  if (deferredPrompt) {
+  if (canInstall) {
     downloadBtn = (
-      <button className={css.DownloadBtn} onClick={promptForInstallHandler}>
+      <button className={css.DownloadBtn} onClick={install}>
         <img src={downloadIcon} alt="Download" />
       </button>
     );
