@@ -27,6 +27,7 @@
   position: absolute;
   background-color: #c4c4c4;
   border-radius: 50%;
+  box-shadow: 0.25rem 0 0.9rem #ffe4e4, 0 0.25rem 1.25rem #86827f;
 }
 
 .Expanded {
