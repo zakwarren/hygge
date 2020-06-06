@@ -3,6 +3,7 @@ import { shallow } from "enzyme";
 
 import css from "./Collection.module.css";
 import Collection from "./Collection";
+import CategoryList from "../../components/Collection/CategoryList";
 
 describe("<Collection />", () => {
   let wrapper;
@@ -30,5 +31,11 @@ describe("<Collection />", () => {
 
     expect(section).toHaveLength(1);
     expect(section.hasClass(css.Categories)).toEqual(true);
+  });
+
+  it("should render a <CategoryList /> element", () => {
+    const cat = wrapper.find(CategoryList);
+
+    expect(cat).toHaveLength(1);
   });
 });
