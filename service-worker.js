@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hygge/precache-manifest.14d2b2786d21047ae379227e6c90b634.js"
+  "/hygge/precache-manifest.eff6dab6650556c116c65884119c2948.js"
 );
 
 self.addEventListener('message', (event) => {
