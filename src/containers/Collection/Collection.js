@@ -7,22 +7,22 @@ const CATEGORIES = [
   {
     id: 1,
     heading: "Seasons",
-    collection: ["circles"],
+    collection: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
   },
   {
     id: 2,
     heading: "Warmth",
-    collection: ["circles"],
+    collection: [{ id: 6 }, { id: 7 }],
   },
   {
     id: 3,
     heading: "People and animals",
-    collection: ["circles"],
+    collection: [{ id: 8 }],
   },
   {
     id: 4,
     heading: "Surreal",
-    collection: ["circles"],
+    collection: [{ id: 9 }],
   },
 ];
 

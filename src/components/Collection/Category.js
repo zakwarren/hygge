@@ -6,9 +6,9 @@ import css from "./Category.module.css";
 const Category = (props) => (
   <>
     <h2 className={css.SubHeading}>{props.heading}</h2>
-    <div>
+    <div className={css.Collection}>
       {props.collection.map((item) => (
-        <div key={item}>{item}</div>
+        <div key={item.id} className={css.Circle}></div>
       ))}
     </div>
   </>

@@ -8,7 +8,7 @@ describe("<Category />", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Category heading="Test" collection={["Testing"]} />);
+    wrapper = shallow(<Category heading="Test" collection={[{ id: 1 }]} />);
   });
 
   it("should render a <h2 /> element with the correct class and text", () => {
@@ -23,6 +23,6 @@ describe("<Category />", () => {
     const divs = wrapper.find("div");
 
     expect(divs).toHaveLength(2);
-    expect(divs.get(1).props.children).toEqual("Testing");
+    expect(divs.get(0).props.className).toEqual(css.Collection);
   });
 });
