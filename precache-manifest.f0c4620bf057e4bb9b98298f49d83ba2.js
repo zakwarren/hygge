@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "52571db641d32e5912fd7e45bae6e10f",
+    "revision": "2e63048a28c8e699f112010c2f6fdfe9",
     "url": "/hygge/index.html"
   },
   {
-    "revision": "7aefa02beef465d817f5",
-    "url": "/hygge/static/css/main.cea3dc45.chunk.css"
+    "revision": "bb324b3062227a5754c6",
+    "url": "/hygge/static/css/main.36b980b8.chunk.css"
   },
   {
     "revision": "40c89e47914c5503c098",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hygge/static/js/2.d547edfc.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7aefa02beef465d817f5",
+    "revision": "bb324b3062227a5754c6",
     "url": "/hygge/static/js/main.6223fb61.chunk.js"
   },
   {
