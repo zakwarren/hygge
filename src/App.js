@@ -11,7 +11,7 @@ const App = () => {
 
   const routes = (
     <Switch>
-      <Route path="/collection" component={Collection} />
+      <Route path="/collection" exact component={Collection} />
       <Route path="/" exact component={Hygge} />
       <Redirect to="/" />
     </Switch>

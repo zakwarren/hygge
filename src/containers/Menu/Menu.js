@@ -17,7 +17,9 @@ const Menu = (props) => {
     content = (
       <>
         <p className={css.MenuItem}>
-          <NavLink to="/">My hygge board</NavLink>
+          <NavLink to="/" exact>
+            My hygge board
+          </NavLink>
         </p>
         <p className={css.MenuItem}>
           <NavLink to="/collection">My collection</NavLink>
