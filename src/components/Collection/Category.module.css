@@ -1,28 +1,10 @@
-.SubHeading {
-  margin: 1rem 0;
-  border-top: 0.06rem solid #e1e1e1;
-  border-bottom: 0.06rem solid #e1e1e1;
-  color: #897d6e;
-  font-size: 1.4rem;
-  font-weight: normal;
-  text-shadow: 0.25rem 0.06rem 0.25rem #e3dcdc;
-}
-
-.Collection {
-  padding: 0.6rem;
-  overflow-x: auto;
-  white-space: nowrap;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-
 .Circle {
   margin: 0 0.5rem;
-  width: 3.5rem;
+  width: 7rem;
+  height: 7rem;
   min-width: 3.5rem;
-  height: 3.5rem;
-  background-color: #86827f;
+  background-color: #deddd9;
+  opacity: 0.25;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -33,4 +15,19 @@
 
 .Circle:hover {
   box-shadow: 0.25rem 0 0.9rem #ffe4e4, 0 0.25rem 1.25rem #86827f;
+}
+
+.SubHeading,
+.Value {
+  margin: 2.2rem 0 0 0;
+  color: #075d63;
+  font-size: 1.4rem;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: 0.25rem 0.06rem 0.25rem #e3dcdcdb;
+}
+
+.Value {
+  margin: 0;
+  font-size: 1.2rem;
 }

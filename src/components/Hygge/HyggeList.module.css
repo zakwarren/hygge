@@ -1,5 +1,5 @@
 .HyggeList {
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
   white-space: nowrap;
 }
