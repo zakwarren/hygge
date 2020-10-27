@@ -1,0 +1,33 @@
+.SuperHeader,
+.Heading {
+  margin: 20% 5% 0%;
+  width: 90%;
+  color: #ded8d3;
+  font-size: 2rem;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.SuperHeader {
+  font-size: 1.5rem;
+}
+
+.Heading {
+  margin-top: 0;
+}
+
+.Expanded {
+  margin-top: -20%;
+}
+
+@media (min-width: 500px) {
+  .Heading {
+    margin-top: 10%;
+  }
+
+  .Expanded {
+    margin-top: -10%;
+  }
+}
