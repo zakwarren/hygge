@@ -1,30 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import useInstaller from "./hooks/useInstaller";
-import Menu from "./components/Menu/Menu";
+import Menu from "./containers/Menu/Menu";
 import Hygge from "./containers/Hygge/Hygge";
 import Collection from "./containers/Collection/Collection";
 
 const App = () => {
   const [canInstall, installHandler] = useInstaller();
-  const [currentPage, setCurrentPage] = useState(<Hygge />);
 
-  const pages = [
-    { label: "My hygge board", element: <Hygge /> },
-    { label: "My collection", element: <Collection /> },
-  ];
-
-  const getPageHandler = (page) => setCurrentPage(page);
+  const routes = (
+    <Switch>
+      <Route path="/collection" component={Collection} />
+      <Route path="/" exact component={Hygge} />
+      <Redirect to="/" />
+    </Switch>
+  );
 
   return (
     <>
-      <Menu
-        canInstall={canInstall}
-        install={installHandler}
-        pages={pages}
-        getPage={getPageHandler}
-      />
-      {currentPage}
+      <Menu canInstall={canInstall} install={installHandler} />
+      {routes}
     </>
   );
 };

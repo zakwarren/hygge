@@ -49,17 +49,19 @@
   }
 }
 
-.Open p {
+.Open .MenuItem,
+.Open .MenuItem a {
   margin: 1rem auto;
   padding: 0.5rem;
   width: 60%;
-  color: #897d6e;
+  color: #c9bcb0;
   font-weight: normal;
+  text-decoration: none;
   text-shadow: 0.25rem 0.06rem 0.25rem #fff;
 }
 
-.Open p:hover,
-.Open p:active {
+.Open .MenuItem:hover,
+.Open .MenuItem:active {
   background: #f3eae2;
   box-shadow: inset 0 0.25rem 0.25rem #c3a58940,
     inset 0 -0.25rem 0.25rem #fbfbfb40;

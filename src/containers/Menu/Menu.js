@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
 import css from "./Menu.module.css";
-import Backdrop from "../Backdrop/Backdrop";
+import Backdrop from "../../components/Backdrop/Backdrop";
 
 const Menu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,12 +16,17 @@ const Menu = (props) => {
     classes.push(css.Open);
     content = (
       <>
-        {props.pages.map((p) => (
-          <p key={p.label} onClick={() => props.getPage(p.element)}>
-            {p.label}
+        <p className={css.MenuItem}>
+          <NavLink to="/">My hygge board</NavLink>
+        </p>
+        <p className={css.MenuItem}>
+          <NavLink to="/collection">My collection</NavLink>
+        </p>
+        {props.canInstall ? (
+          <p className={css.MenuItem} onClick={props.install}>
+            Install
           </p>
-        ))}
-        {props.canInstall ? <p onClick={props.install}>Install</p> : null}
+        ) : null}
       </>
     );
   }
@@ -38,8 +44,6 @@ const Menu = (props) => {
 Menu.propTypes = {
   canInstall: PropTypes.bool.isRequired,
   install: PropTypes.func.isRequired,
-  pages: PropTypes.array.isRequired,
-  getPage: PropTypes.func.isRequired,
 };
 
 export default Menu;
