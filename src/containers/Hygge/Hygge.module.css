@@ -7,20 +7,6 @@
   flex-direction: column;
 }
 
-.Heading {
-  margin: 20% -5% 5% 10%;
-  width: 90%;
-  color: #c3a58966;
-  font-size: 2rem;
-  text-align: right;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-}
-
-.Expanded {
-  margin-top: -20%;
-}
-
 .Logo {
   width: 40vh;
   height: 40vh;
@@ -31,16 +17,7 @@
 }
 
 @media (min-width: 500px) {
-  .Heading {
-    margin-top: 10%;
-    text-align: center;
-  }
-
   .Logo {
     right: 10%;
-  }
-
-  .Expanded {
-    margin-top: -10%;
   }
 }

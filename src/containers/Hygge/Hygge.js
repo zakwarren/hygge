@@ -4,6 +4,7 @@ import css from "./Hygge.module.css";
 import logo from "../../assets/snowflake.png";
 import { IMAGE_MAPPING } from "../../shared/images";
 import HyggeList from "../../components/Hygge/HyggeList";
+import Heading from "../../components/Heading/Heading";
 
 const IMAGES = IMAGE_MAPPING.map((map) => {
   return { ...map, display: true, isExpanded: false };
@@ -32,14 +33,9 @@ const Hygge = () => {
     setHasExpanded(updatedExp);
   };
 
-  const headerClasses = [css.Heading];
-  if (hasExpanded) {
-    headerClasses.push(css.Expanded);
-  }
-
   return (
     <main className={css.Hygge}>
-      <h1 className={headerClasses.join(" ")}>~ your hygge ~</h1>
+      <Heading headerText="Hygge Board" hasExpanded={hasExpanded} />
       <img className={css.Logo} src={logo} alt="Logo" />
       <HyggeList list={hygges} clickHygge={clickHyggeHandler} />
     </main>

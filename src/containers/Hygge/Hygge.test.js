@@ -5,6 +5,7 @@ import css from "./Hygge.module.css";
 import logo from "../assets/snowflake.png";
 import Hygge from "./Hygge";
 import HyggeList from "../components/HyggeList";
+import Heading from "../../components/Heading/Heading";
 
 describe("<Hygge />", () => {
   let wrapper;
@@ -20,11 +21,10 @@ describe("<Hygge />", () => {
     expect(main.hasClass(css.Hygge)).toEqual(true);
   });
 
-  it("should render a <h1 /> element with the Heading class", () => {
-    const header = wrapper.find("h1");
+  it("should render a <Heading /> element", () => {
+    const header = wrapper.find(Heading);
 
     expect(header).toHaveLength(1);
-    expect(header.hasClass(css.Heading)).toEqual(true);
   });
 
   it("should render a <img /> element with the Logo class and correct src", () => {

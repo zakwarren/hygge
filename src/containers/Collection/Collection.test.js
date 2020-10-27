@@ -4,6 +4,7 @@ import { shallow } from "enzyme";
 import css from "./Collection.module.css";
 import Collection from "./Collection";
 import CategoryList from "../../components/Collection/CategoryList";
+import Heading from "../../components/Heading/Heading";
 
 describe("<Collection />", () => {
   let wrapper;
@@ -19,11 +20,10 @@ describe("<Collection />", () => {
     expect(main.hasClass(css.Collection)).toEqual(true);
   });
 
-  it("should render a <h1 /> element with the Heading class", () => {
-    const header = wrapper.find("h1");
+  it("should render a <Heading /> element", () => {
+    const header = wrapper.find(Heading);
 
     expect(header).toHaveLength(1);
-    expect(header.hasClass(css.Heading)).toEqual(true);
   });
 
   it("should render a <section /> element with the correct class", () => {

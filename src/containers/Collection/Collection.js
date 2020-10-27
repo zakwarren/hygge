@@ -2,6 +2,7 @@ import React from "react";
 
 import css from "./Collection.module.css";
 import CategoryList from "../../components/Collection/CategoryList";
+import Heading from "../../components/Heading/Heading";
 
 const CATEGORIES = [
   {
@@ -16,7 +17,7 @@ const CATEGORIES = [
   },
   {
     id: 3,
-    heading: "People and animals",
+    heading: "Creatures",
     collection: [{ id: 8 }],
   },
   {
@@ -29,7 +30,7 @@ const CATEGORIES = [
 const Collection = () => {
   return (
     <main className={css.Collection}>
-      <h1 className={css.Heading}>~ my Collection ~</h1>
+      <Heading headerText="Collection" hasExpanded={false} />
       <section className={css.Categories}>
         <CategoryList list={CATEGORIES} />
       </section>
