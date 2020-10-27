@@ -35,8 +35,15 @@
 }
 
 .Expanded {
+  margin-top: 10vh;
   width: 120vh;
   height: 120vh;
+}
+
+@media (min-width: 1200px) {
+  .Expanded {
+    margin-top: 27vh;
+  }
 }
 
 .Shrunk {

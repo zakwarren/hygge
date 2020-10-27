@@ -23,8 +23,8 @@
 }
 
 @media (min-width: 500px) {
-  .Heading {
-    margin-top: 10%;
+  .SuperHeader {
+    margin-top: 5%;
   }
 
   .Expanded {
