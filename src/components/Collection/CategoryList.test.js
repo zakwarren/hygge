@@ -8,13 +8,13 @@ describe("<CategoryList />", () => {
   let wrapper;
   const list = [
     {
-      id: 1,
-      heading: "Test 1",
+      name: "Test 1",
+      color: "#48d0e2",
       collection: ["test"],
     },
     {
-      id: 2,
-      heading: "Test 2",
+      name: "Test 2",
+      color: "#db5b5b",
       collection: ["test"],
     },
   ];

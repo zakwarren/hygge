@@ -1,51 +1,41 @@
 import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import css from "./Collection.module.css";
+import { CATEGORIES } from "../../shared/categories";
 import CategoryList from "../../components/Collection/CategoryList";
 import Heading from "../../components/Heading/Heading";
 
-const CATEGORIES = [
-  {
-    id: 1,
-    heading: "Surreal",
-    color: "#48d0e2",
-    collection: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
-  },
-  {
-    id: 2,
-    heading: "Warmth",
-    color: "#db5b5b",
-    collection: [{ id: 6 }, { id: 7 }],
-  },
-  {
-    id: 3,
-    heading: "Seasons",
-    color: "#f2b61a",
-    collection: [{ id: 8 }, { id: 9 }, { id: 10 }, { id: 11 }],
-  },
-  {
-    id: 4,
-    heading: "Aquatic",
-    color: "#6ca7ec",
-    collection: [{ id: 12 }],
-  },
-  {
-    id: 5,
-    heading: "Creatures",
-    color: "#7ab778",
-    collection: [],
-  },
-];
+export const Collection = (props) => {
+  const { collection } = props;
 
-const Collection = () => {
+  const catKeys = Object.keys(CATEGORIES);
+  const mappedCats = catKeys.map((catName) => {
+    const cat = CATEGORIES[catName];
+    const images = collection.filter((img) => img.category === cat.name);
+    const catWithImgs = { ...cat, collection: images };
+    return catWithImgs;
+  });
+
   return (
     <main className={css.Collection}>
       <Heading headerText="Collection" hasExpanded={false} />
       <section className={css.Categories}>
-        <CategoryList list={CATEGORIES} />
+        <CategoryList list={mappedCats} />
       </section>
     </main>
   );
 };
 
-export default Collection;
+Collection.propTypes = {
+  collection: PropTypes.array.isRequired,
+};
+
+export const mapStateToProps = (state) => {
+  return {
+    collection: state.hygge.collection,
+  };
+};
+
+export default connect(mapStateToProps)(Collection);

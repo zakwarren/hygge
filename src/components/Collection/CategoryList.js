@@ -7,7 +7,7 @@ import Category from "./Category";
 const CategoryList = (props) => (
   <section className={css.Collections}>
     {props.list.map((el) => (
-      <Category key={el.id} {...el} />
+      <Category key={el.name} {...el} />
     ))}
   </section>
 );

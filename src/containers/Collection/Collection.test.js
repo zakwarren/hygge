@@ -2,40 +2,55 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import css from "./Collection.module.css";
-import Collection from "./Collection";
+import { Collection, mapStateToProps } from "./Collection";
 import CategoryList from "../../components/Collection/CategoryList";
 import Heading from "../../components/Heading/Heading";
 
 describe("<Collection />", () => {
-  let wrapper;
+  describe("mapStateToProps", () => {
+    it("should map the state to props correctly", () => {
+      const hygge = {
+        collection: [],
+      };
+      const appState = { hygge: hygge };
+      const componentState = mapStateToProps(appState);
 
-  beforeEach(() => {
-    wrapper = shallow(<Collection />);
+      expect(componentState).toEqual(hygge);
+    });
   });
 
-  it("should render a <main /> element with the correct class", () => {
-    const main = wrapper.find("main");
+  describe("display", () => {
+    let wrapper;
+    const collection = ["test"];
 
-    expect(main).toHaveLength(1);
-    expect(main.hasClass(css.Collection)).toEqual(true);
-  });
+    beforeEach(() => {
+      wrapper = shallow(<Collection collection={collection} />);
+    });
 
-  it("should render a <Heading /> element", () => {
-    const header = wrapper.find(Heading);
+    it("should render a <main /> element with the correct class", () => {
+      const main = wrapper.find("main");
 
-    expect(header).toHaveLength(1);
-  });
+      expect(main).toHaveLength(1);
+      expect(main.hasClass(css.Collection)).toEqual(true);
+    });
 
-  it("should render a <section /> element with the correct class", () => {
-    const section = wrapper.find("section");
+    it("should render a <Heading /> element", () => {
+      const header = wrapper.find(Heading);
 
-    expect(section).toHaveLength(1);
-    expect(section.hasClass(css.Categories)).toEqual(true);
-  });
+      expect(header).toHaveLength(1);
+    });
 
-  it("should render a <CategoryList /> element", () => {
-    const cat = wrapper.find(CategoryList);
+    it("should render a <section /> element with the correct class", () => {
+      const section = wrapper.find("section");
 
-    expect(cat).toHaveLength(1);
+      expect(section).toHaveLength(1);
+      expect(section.hasClass(css.Categories)).toEqual(true);
+    });
+
+    it("should render a <CategoryList /> element", () => {
+      const cat = wrapper.find(CategoryList);
+
+      expect(cat).toHaveLength(1);
+    });
   });
 });
