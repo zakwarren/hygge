@@ -1,7 +1,8 @@
 import * as actionTypes from "./actionTypes";
 
-export const setCollection = () => {
+export const setCollection = (collection) => {
   return {
     type: actionTypes.SET_COLLECTION,
+    collection: collection,
   };
 };

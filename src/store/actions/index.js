@@ -1,0 +1,1 @@
+export { setCollection } from "./hygge";
