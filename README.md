@@ -9,7 +9,26 @@ with this app. Embrace the coziness and contentment.
 
 Enjoy it at [Hygge](https://zakwarren.github.io/hygge/)
 
-## How to Use
+![My hygge board](/public/myHygge.png)
+
+## App
+
+This has been built as a Progressive Web App (PWA) so, if you're using a
+modern browser, you can install it as a standalone app. It's designed
+with mobile devices in mind, so looks best on smaller screen.
+
+![Expanded hygge image](/public/expandedImage.png)
+
+Click on a Hygge image to expand it and enjoy it in all it's glory.
+Click on the button in the bottom left corner to open the menu and
+navigate to the collections page.
+
+![My collections](/public/myCollections.png)
+
+Click on a collection to view the hygge board of those images and feel
+the contentment wash over you.
+
+## How to run development environment
 
 You need [Node.js](https://nodejs.org) installed on your machine.
 Simply download the installer from [nodejs.org](https://nodejs.org)

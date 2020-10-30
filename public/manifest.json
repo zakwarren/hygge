@@ -37,6 +37,16 @@
       "type": "image/png"
     },
     {
+      "src": "expandedImage.png",
+      "sizes": "410x720",
+      "type": "image/png"
+    },
+    {
+      "src": "menu.png",
+      "sizes": "410x720",
+      "type": "image/png"
+    },
+    {
       "src": "myCollections.png",
       "sizes": "750x1334",
       "type": "image/png"
