@@ -20,3 +20,5 @@ export const CATEGORIES = {
     color: "#7ab778",
   },
 };
+
+export const RANDOM = "random";

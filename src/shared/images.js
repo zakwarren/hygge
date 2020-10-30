@@ -1,4 +1,4 @@
-import { CATEGORIES } from "./categories";
+import { CATEGORIES, RANDOM } from "./categories";
 
 import blanket1 from "../assets/images/sincerely-media-9nhxEa3PK30-unsplash.jpg";
 import book1 from "../assets/images/annie-spratt-OQj0chxpZOI-unsplash.jpg";
@@ -9,6 +9,8 @@ import fire1 from "../assets/images/stephane-juban-DI8Bf6K1134-unsplash.jpg";
 import rain1 from "../assets/images/aditya-vyas-PzhmEp_aDU4-unsplash.jpg";
 import rain2 from "../assets/images/john-noonan-E-9CFTftQh4-unsplash.jpg";
 import snow1 from "../assets/images/emily-toycen-jd_YFWRkOqQ-unsplash.jpg";
+
+const random_amount = 4;
 
 const IMAGE_MAPPING = [
   {
@@ -68,9 +70,17 @@ const IMAGE_MAPPING = [
 ];
 
 export const getImages = (category) => {
-  const filtered = category
-    ? IMAGE_MAPPING.filter((map) => map.category === category)
-    : IMAGE_MAPPING;
+  let filtered;
+
+  if (category === RANDOM) {
+    const shuffled = IMAGE_MAPPING.sort(() => 0.5 - Math.random());
+    filtered = shuffled.slice(0, random_amount);
+  } else if (category) {
+    filtered = IMAGE_MAPPING.filter((map) => map.category === category);
+  } else {
+    filtered = IMAGE_MAPPING;
+  }
+
   const images = filtered.map((map) => {
     return { ...map, display: true, isExpanded: false };
   });

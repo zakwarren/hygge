@@ -1,9 +1,10 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../shared/utilities";
 import { getImages } from "../../shared/images";
+import { RANDOM } from "../../shared/categories";
 
 const initialState = {
-  collection: getImages(),
+  collection: getImages(RANDOM),
 };
 
 const reducer = (state = initialState, action) => {
