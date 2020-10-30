@@ -20,8 +20,26 @@
     }
   ],
   "start_url": ".",
+  "scope": "https://zakwarren.github.io/hygge/",
   "display": "standalone",
   "orientation": "any",
   "theme_color": "#C4A589",
-  "background_color": "#D6CDC4"
+  "background_color": "#D6CDC4",
+  "screenshots": [
+    {
+      "src": "myHygge.png",
+      "sizes": "1280x800",
+      "type": "image/png"
+    },
+    {
+      "src": "myHyggeMobile.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    },
+    {
+      "src": "myCollections.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    }
+  ]
 }
