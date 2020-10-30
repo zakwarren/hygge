@@ -1,13 +1,15 @@
 {
   "files": {
     "main.css": "/hygge/static/css/main.6cdcc2ba.chunk.css",
-    "main.js": "/hygge/static/js/main.991d0815.chunk.js",
-    "main.js.map": "/hygge/static/js/main.991d0815.chunk.js.map",
+    "main.js": "/hygge/static/js/main.64a1a1d9.chunk.js",
+    "main.js.map": "/hygge/static/js/main.64a1a1d9.chunk.js.map",
     "runtime-main.js": "/hygge/static/js/runtime-main.00cbb7cf.js",
     "runtime-main.js.map": "/hygge/static/js/runtime-main.00cbb7cf.js.map",
     "static/js/2.6db76eaa.chunk.js": "/hygge/static/js/2.6db76eaa.chunk.js",
     "static/js/2.6db76eaa.chunk.js.map": "/hygge/static/js/2.6db76eaa.chunk.js.map",
     "index.html": "/hygge/index.html",
+    "service-worker.js": "/hygge/service-worker.js",
+    "service-worker.js.map": "/hygge/service-worker.js.map",
     "static/css/main.6cdcc2ba.chunk.css.map": "/hygge/static/css/main.6cdcc2ba.chunk.css.map",
     "static/js/2.6db76eaa.chunk.js.LICENSE.txt": "/hygge/static/js/2.6db76eaa.chunk.js.LICENSE.txt",
     "static/media/aditya-vyas-PzhmEp_aDU4-unsplash.45437293.jpg": "/hygge/static/media/aditya-vyas-PzhmEp_aDU4-unsplash.45437293.jpg",
@@ -25,6 +27,6 @@
     "static/js/runtime-main.00cbb7cf.js",
     "static/js/2.6db76eaa.chunk.js",
     "static/css/main.6cdcc2ba.chunk.css",
-    "static/js/main.991d0815.chunk.js"
+    "static/js/main.64a1a1d9.chunk.js"
   ]
 }
