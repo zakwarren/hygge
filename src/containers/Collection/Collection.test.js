@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import css from "./Collection.module.css";
-import { Collection, mapStateToProps } from "./Collection";
+import { Collection, mapStateToProps, mapDispatchToProps } from "./Collection";
 import CategoryList from "../../components/Collection/CategoryList";
 import Heading from "../../components/Heading/Heading";
 
@@ -19,12 +19,24 @@ describe("<Collection />", () => {
     });
   });
 
+  describe("mapDispatchToProps", () => {
+    it("should map the dispatch functions to props correctly", () => {
+      const componentDispatch = mapDispatchToProps(jest.fn);
+
+      expect(typeof componentDispatch.onSetCollection).toBe("function");
+    });
+  });
+
   describe("display", () => {
     let wrapper;
-    const collection = ["test"];
+    const history = { push: jest.fn };
+    const allHygge = [{ category: "test" }];
+    const onSetCollection = jest.fn;
 
     beforeEach(() => {
-      wrapper = shallow(<Collection collection={collection} />);
+      wrapper = shallow(
+        <Collection {...{ history, collection: allHygge, onSetCollection }} />
+      );
     });
 
     it("should render a <main /> element with the correct class", () => {

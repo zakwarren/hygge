@@ -1,4 +1,4 @@
-import { CATEGORIES, RANDOM } from "./categories";
+import { CATEGORIES, RANDOM, ALL } from "./categories";
 
 import blanket1 from "../assets/images/sincerely-media-9nhxEa3PK30-unsplash.jpg";
 import book1 from "../assets/images/annie-spratt-OQj0chxpZOI-unsplash.jpg";
@@ -75,7 +75,7 @@ export const getImages = (category) => {
   if (category === RANDOM) {
     const shuffled = IMAGE_MAPPING.sort(() => 0.5 - Math.random());
     filtered = shuffled.slice(0, random_amount);
-  } else if (category) {
+  } else if (category && category !== ALL.name) {
     filtered = IMAGE_MAPPING.filter((map) => map.category === category);
   } else {
     filtered = IMAGE_MAPPING;

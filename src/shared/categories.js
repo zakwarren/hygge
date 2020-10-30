@@ -1,3 +1,10 @@
+export const RANDOM = "Random";
+
+export const ALL = {
+  name: "All",
+  color: "#bd8e62",
+};
+
 export const CATEGORIES = {
   surreal: {
     name: "Surreal",
@@ -20,5 +27,3 @@ export const CATEGORIES = {
     color: "#7ab778",
   },
 };
-
-export const RANDOM = "random";

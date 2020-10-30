@@ -4,6 +4,7 @@ import { getImages } from "../../shared/images";
 import { RANDOM } from "../../shared/categories";
 
 const initialState = {
+  allHygge: getImages(),
   collection: getImages(RANDOM),
 };
 

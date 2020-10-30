@@ -3,6 +3,7 @@ import reducer from "./hygge";
 
 describe("hygge reducer", () => {
   const initialState = {
+    allHygge: null,
     collection: null,
   };
 
