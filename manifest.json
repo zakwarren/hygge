@@ -27,27 +27,27 @@
   "background_color": "#D6CDC4",
   "screenshots": [
     {
-      "src": "myHygge.png",
+      "src": "screenshots/myHygge.png",
       "sizes": "1280x800",
       "type": "image/png"
     },
     {
-      "src": "myHyggeMobile.png",
+      "src": "screenshots/myHyggeMobile.png",
       "sizes": "750x1334",
       "type": "image/png"
     },
     {
-      "src": "expandedImage.png",
+      "src": "screenshots/expandedImage.png",
       "sizes": "410x720",
       "type": "image/png"
     },
     {
-      "src": "menu.png",
+      "src": "screenshots/menu.png",
       "sizes": "410x720",
       "type": "image/png"
     },
     {
-      "src": "myCollections.png",
+      "src": "screenshots/myCollections.png",
       "sizes": "750x1334",
       "type": "image/png"
     }
