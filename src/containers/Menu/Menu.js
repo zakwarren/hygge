@@ -29,6 +29,8 @@ const Menu = (props) => {
             Install
           </p>
         ) : null}
+        <p className={[css.MenuItem, css.Inactive].join(" ")}>Upload file</p>
+        <p className={[css.MenuItem, css.Inactive].join(" ")}>Share board</p>
       </>
     );
   }
