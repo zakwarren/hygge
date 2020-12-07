@@ -1,0 +1,14 @@
+.Logo {
+  width: 40vh;
+  height: 40vh;
+  position: fixed;
+  bottom: -10%;
+  right: -10%;
+  z-index: -1;
+}
+
+@media (min-width: 500px) {
+  .Logo {
+    right: 10%;
+  }
+}

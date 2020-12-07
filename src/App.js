@@ -1,8 +1,10 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
+import css from "./App.module.css";
 import useInstaller from "./hooks/useInstaller";
 import Menu from "./containers/Menu/Menu";
+import logo from "./assets/snowflake.png";
 import Hygge from "./containers/Hygge/Hygge";
 import Collection from "./containers/Collection/Collection";
 import Category from "./containers/Category/Category";
@@ -22,6 +24,7 @@ const App = () => {
   return (
     <>
       <Menu canInstall={canInstall} install={installHandler} />
+      <img className={css.Logo} src={logo} alt="Logo" />
       {routes}
     </>
   );

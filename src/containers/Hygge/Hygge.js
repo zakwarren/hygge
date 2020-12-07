@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import css from "./Hygge.module.css";
-import logo from "../../assets/snowflake.png";
 import * as actions from "../../store/actions/index";
 import { expandHygge } from "../../shared/utilities";
 import HyggeList from "../../components/Hygge/HyggeList";
@@ -25,7 +24,6 @@ export const Hygge = (props) => {
   return (
     <main className={css.Hygge}>
       <Heading headerText="Hygge Board" hasExpanded={hasExpanded} />
-      <img className={css.Logo} src={logo} alt="Logo" />
       {collection && (
         <HyggeList
           list={collection}
