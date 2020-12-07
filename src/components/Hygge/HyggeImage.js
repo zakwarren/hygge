@@ -4,18 +4,36 @@ import PropTypes from "prop-types";
 import css from "./HyggeImage.module.css";
 
 const HyggeImage = (props) => {
+  const {
+    image,
+    attribution,
+    display,
+    isExpanded,
+    isSelected,
+    isSmall,
+    clicked,
+  } = props;
+
   const classes = [css.HyggeImage];
-  if (props.isExpanded) {
+  if (isExpanded) {
     classes.push(css.Expanded);
-  } else if (!props.display) {
+  } else if (!display) {
     classes.push(css.Shrunk);
+  }
+  if (isSmall && !isExpanded && display) {
+    classes.push(css.Small);
+  }
+
+  const imgClasses = [css.Circle];
+  if (isSelected) {
+    imgClasses.push(css.Selected);
   }
 
   return (
-    <div className={classes.join(" ")} onClick={props.clicked}>
-      <img className={css.Circle} src={props.image} alt={props.attribution} />
-      {props.isExpanded ? (
-        <span className={css.Attribution}>{props.attribution}</span>
+    <div className={classes.join(" ")} onClick={clicked}>
+      <img className={imgClasses.join(" ")} src={image} alt={attribution} />
+      {isExpanded ? (
+        <span className={css.Attribution}>{attribution}</span>
       ) : null}
     </div>
   );
@@ -27,6 +45,8 @@ HyggeImage.propTypes = {
   attribution: PropTypes.string.isRequired,
   display: PropTypes.bool.isRequired,
   isExpanded: PropTypes.bool.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  isSmall: PropTypes.bool.isRequired,
   clicked: PropTypes.func.isRequired,
 };
 

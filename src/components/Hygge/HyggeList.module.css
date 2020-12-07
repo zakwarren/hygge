@@ -3,3 +3,13 @@
   overflow-y: visible;
   white-space: nowrap;
 }
+
+.Wrap {
+  padding: 2rem;
+  width: 100%;
+  overflow: hidden;
+  white-space: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

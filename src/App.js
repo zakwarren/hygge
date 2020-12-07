@@ -5,12 +5,14 @@ import useInstaller from "./hooks/useInstaller";
 import Menu from "./containers/Menu/Menu";
 import Hygge from "./containers/Hygge/Hygge";
 import Collection from "./containers/Collection/Collection";
+import Category from "./containers/Category/Category";
 
 const App = () => {
   const [canInstall, installHandler] = useInstaller();
 
   const routes = (
     <Switch>
+      <Route path="/collection/:category" exact component={Category} />
       <Route path="/collection" exact component={Collection} />
       <Route path="/" exact component={Hygge} />
       <Redirect to="/" />

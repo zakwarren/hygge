@@ -1,0 +1,19 @@
+.Category {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Backing {
+  width: 160vw;
+  height: 160vw;
+  position: fixed;
+  right: -12rem;
+  bottom: -5rem;
+  background-color: #48d0e2;
+  opacity: 0.25;
+  border-radius: 50%;
+}

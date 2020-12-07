@@ -69,7 +69,7 @@ const IMAGE_MAPPING = [
   },
 ];
 
-export const getImages = (category) => {
+export const getImages = (category, selection) => {
   let filtered;
 
   if (category === RANDOM) {
@@ -77,12 +77,22 @@ export const getImages = (category) => {
     filtered = shuffled.slice(0, random_amount);
   } else if (category && category !== ALL.name) {
     filtered = IMAGE_MAPPING.filter((map) => map.category === category);
+  } else if (selection && selection.length > 0) {
+    const selected = IMAGE_MAPPING.filter((map) => selection.includes(map.id));
+    filtered = selected.map((map) => {
+      return { ...map, isSelected: true };
+    });
   } else {
     filtered = IMAGE_MAPPING;
   }
 
   const images = filtered.map((map) => {
-    return { ...map, display: true, isExpanded: false };
+    return {
+      ...map,
+      display: true,
+      isExpanded: false,
+      isSelected: map.isSelected || false,
+    };
   });
   return images;
 };

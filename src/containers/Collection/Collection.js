@@ -15,7 +15,7 @@ export const Collection = (props) => {
   const setCategory = (category) => {
     const newCollection = getImages(category);
     onSetCollection(newCollection);
-    history.push("/");
+    history.push(`/collection/${category}`);
   };
 
   const catKeys = Object.keys(CATEGORIES);
