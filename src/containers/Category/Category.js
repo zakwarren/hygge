@@ -1,20 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { useParams, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import css from "./Category.module.css";
 import * as actions from "../../store/actions/index";
 import Heading from "../../components/Heading/Heading";
 import HyggeList from "../../components/Hygge/HyggeList";
 
-const Category = (props) => {
-  const { collection, selectedIds, onSaveSelection } = props;
-  const { category } = useParams();
+export const Category = (props) => {
+  const { match, collection, selectedIds, onSaveSelection } = props;
 
   const clickHyggeHandler = (id) => {
     let select = [];
-    if (selectedIds.includes(id)) {
+    if (selectedIds && selectedIds.includes(id)) {
       select = selectedIds.filter((selId) => selId !== id);
     } else {
       select = [...selectedIds, id];
@@ -25,7 +24,8 @@ const Category = (props) => {
 
   const listWithSelected = collection
     ? collection.map((map) => {
-        return { ...map, isSelected: selectedIds.includes(map.id) };
+        const selected = selectedIds && selectedIds.includes(map.id);
+        return { ...map, isSelected: selected };
       })
     : null;
 
@@ -33,7 +33,7 @@ const Category = (props) => {
   if (collection) {
     render = (
       <main className={css.Category}>
-        <Heading headerText={category} hasExpanded={false} />
+        <Heading headerText={match.params.category} hasExpanded={false} />
         <div className={css.Backing}></div>
         <HyggeList
           list={listWithSelected}
@@ -48,6 +48,10 @@ const Category = (props) => {
 };
 
 Category.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({ category: PropTypes.string.isRequired })
+      .isRequired,
+  }).isRequired,
   collection: PropTypes.array,
   selectedIds: PropTypes.array,
   onSaveSelection: PropTypes.func.isRequired,
