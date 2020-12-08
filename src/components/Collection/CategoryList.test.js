@@ -11,11 +11,13 @@ describe("<CategoryList />", () => {
       name: "Test 1",
       color: "#48d0e2",
       collection: ["test"],
+      onClick: jest.fn,
     },
     {
       name: "Test 2",
       color: "#db5b5b",
       collection: ["test"],
+      onClick: jest.fn,
     },
   ];
 

@@ -26,7 +26,9 @@ describe("<HyggeList />", () => {
   const clickFn = jest.fn;
 
   beforeEach(() => {
-    wrapper = shallow(<HyggeList list={list} clickHygge={clickFn} />);
+    wrapper = shallow(
+      <HyggeList list={list} wrap={false} clickHygge={clickFn} />
+    );
   });
 
   it("should render a <div /> element with the HyggeList class", () => {
@@ -34,6 +36,15 @@ describe("<HyggeList />", () => {
 
     expect(div).toHaveLength(1);
     expect(div.hasClass(css.HyggeList)).toEqual(true);
+    expect(div.hasClass(css.Wrap)).toEqual(false);
+  });
+
+  it("should render with the Wrap class when wrap is set to true", () => {
+    wrapper.setProps({ wrap: true });
+    const div = wrapper.find("div");
+
+    expect(div).toHaveLength(1);
+    expect(div.hasClass(css.Wrap)).toEqual(true);
   });
 
   it("should render two <HyggeImage /> elements", () => {

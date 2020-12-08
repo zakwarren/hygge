@@ -9,7 +9,12 @@ describe("<Category />", () => {
 
   beforeEach(() => {
     wrapper = shallow(
-      <Category name="Test" color="#db5b5b" collection={[{ id: 1 }]} />
+      <Category
+        name="Test"
+        color="#db5b5b"
+        collection={[{ id: 1 }]}
+        onClick={jest.fn}
+      />
     );
   });
 

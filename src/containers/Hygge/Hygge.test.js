@@ -2,7 +2,6 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import css from "./Hygge.module.css";
-import logo from "../../assets/snowflake.png";
 import { Hygge, mapStateToProps, mapDispatchToProps } from "./Hygge";
 import HyggeList from "../../components/Hygge/HyggeList";
 import Heading from "../../components/Heading/Heading";
@@ -24,6 +23,7 @@ describe("<Hygge />", () => {
     it("should map the dispatch functions to props correctly", () => {
       const componentDispatch = mapDispatchToProps(jest.fn);
 
+      expect(typeof componentDispatch.onGetSelection).toBe("function");
       expect(typeof componentDispatch.onSetCollection).toBe("function");
     });
   });
@@ -31,11 +31,12 @@ describe("<Hygge />", () => {
   describe("display", () => {
     let wrapper;
     const collection = [];
+    const onGetSelection = jest.fn;
     const onSetCollection = jest.fn;
 
     beforeEach(() => {
       wrapper = shallow(
-        <Hygge collection={collection} onSetCollection={onSetCollection} />
+        <Hygge {...{ collection, onGetSelection, onSetCollection }} />
       );
     });
 
@@ -50,15 +51,6 @@ describe("<Hygge />", () => {
       const header = wrapper.find(Heading);
 
       expect(header).toHaveLength(1);
-    });
-
-    it("should render a <img /> element with the Logo class and correct src", () => {
-      const img = wrapper.find("img");
-
-      expect(img).toHaveLength(1);
-      expect(img.hasClass(css.Logo)).toEqual(true);
-      expect(img.prop("src")).toEqual(logo);
-      expect(img.prop("alt")).toEqual("Logo");
     });
 
     it("should render a <HyggeList /> element", () => {

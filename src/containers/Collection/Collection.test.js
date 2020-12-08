@@ -10,7 +10,7 @@ describe("<Collection />", () => {
   describe("mapStateToProps", () => {
     it("should map the state to props correctly", () => {
       const hygge = {
-        collection: [],
+        allHygge: [],
       };
       const appState = { hygge: hygge };
       const componentState = mapStateToProps(appState);
@@ -35,7 +35,7 @@ describe("<Collection />", () => {
 
     beforeEach(() => {
       wrapper = shallow(
-        <Collection {...{ history, collection: allHygge, onSetCollection }} />
+        <Collection {...{ history, allHygge, onSetCollection }} />
       );
     });
 
