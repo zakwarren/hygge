@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useInstaller = () => {
+export const useInstaller = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
@@ -25,5 +25,3 @@ const useInstaller = () => {
 
   return [deferredPrompt !== null, promptForInstallHandler];
 };
-
-export default useInstaller;
