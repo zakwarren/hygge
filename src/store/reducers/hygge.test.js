@@ -5,6 +5,7 @@ describe("hygge reducer", () => {
   const initialState = {
     allHygge: null,
     collection: null,
+    selectedIds: null,
   };
 
   it("should return the initial state when invalid type", () => {
@@ -21,5 +22,15 @@ describe("hygge reducer", () => {
     });
 
     expect(newState.collection).toEqual(collection);
+  });
+
+  it("should set selected IDs", () => {
+    const selectedIds = ["test"];
+    const newState = reducer(initialState, {
+      type: actionTypes.SET_SELECTED,
+      selectedIds: selectedIds,
+    });
+
+    expect(newState.selectedIds).toEqual(selectedIds);
   });
 });

@@ -2,7 +2,7 @@ import * as actionTypes from "./actionTypes";
 import { getImages } from "../../shared/images";
 import { RANDOM } from "../../shared/categories";
 
-export const STORAGE = "selection";
+export const STORAGE = "myHygge";
 
 export const setCollection = (collection) => {
   return {
@@ -11,11 +11,19 @@ export const setCollection = (collection) => {
   };
 };
 
+export const setSelectedIds = (selectedIds) => {
+  return {
+    type: actionTypes.SET_SELECTED,
+    selectedIds: selectedIds,
+  };
+};
+
 export const getSelection = () => {
   return (dispatch) => {
     const idString = localStorage.getItem(STORAGE);
     const ids = idString ? JSON.parse(idString) : null;
     if (ids) {
+      dispatch(setSelectedIds(ids));
       const collection = getImages(null, ids);
       dispatch(setCollection(collection));
     } else {
@@ -25,12 +33,11 @@ export const getSelection = () => {
   };
 };
 
-export const saveSelection = (selection) => {
+export const saveSelection = (selectedIds) => {
   return (dispatch) => {
-    const ids = selection.map((item) => item.id);
-    const idString = JSON.stringify(ids);
+    const idString = JSON.stringify(selectedIds);
     localStorage.setItem(STORAGE, idString);
 
-    dispatch(setCollection(selection));
+    dispatch(setSelectedIds(selectedIds));
   };
 };
