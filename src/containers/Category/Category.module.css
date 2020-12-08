@@ -16,4 +16,32 @@
   background-color: #48d0e2;
   opacity: 0.25;
   border-radius: 50%;
+  animation-name: arrival;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes arrival {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 160vw;
+    height: 160vw;
+  }
+}
+
+@media (min-width: 500px) {
+  .Backing {
+    right: -50%;
+    bottom: -15rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .Backing {
+    bottom: -100%;
+  }
 }
