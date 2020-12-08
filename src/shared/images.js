@@ -78,10 +78,7 @@ export const getImages = (category, selection) => {
   } else if (category && category !== ALL.name) {
     filtered = IMAGE_MAPPING.filter((map) => map.category === category);
   } else if (selection && selection.length > 0) {
-    const selected = IMAGE_MAPPING.filter((map) => selection.includes(map.id));
-    filtered = selected.map((map) => {
-      return { ...map, isSelected: true };
-    });
+    filtered = IMAGE_MAPPING.filter((map) => selection.includes(map.id));
   } else {
     filtered = IMAGE_MAPPING;
   }
@@ -91,7 +88,6 @@ export const getImages = (category, selection) => {
       ...map,
       display: true,
       isExpanded: false,
-      isSelected: map.isSelected || false,
     };
   });
   return images;

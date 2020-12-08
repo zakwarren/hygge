@@ -9,19 +9,25 @@ import Heading from "../../components/Heading/Heading";
 import HyggeList from "../../components/Hygge/HyggeList";
 
 const Category = (props) => {
-  const { collection, onSetCollection } = props;
+  const { collection, selectedIds, onSaveSelection } = props;
   const { category } = useParams();
 
   const clickHyggeHandler = (id) => {
-    const newCollection = collection.map((map) => {
-      if (map.id === id) {
-        return { ...map, isSelected: !map.isSelected };
-      } else {
-        return map;
-      }
-    });
-    onSetCollection(newCollection);
+    let select = [];
+    if (selectedIds.includes(id)) {
+      select = selectedIds.filter((selId) => selId !== id);
+    } else {
+      select = [...selectedIds, id];
+    }
+    const unique = [...new Set(select)];
+    onSaveSelection(unique);
   };
+
+  const listWithSelected = collection
+    ? collection.map((map) => {
+        return { ...map, isSelected: selectedIds.includes(map.id) };
+      })
+    : null;
 
   let render = <Redirect to="/collection" />;
   if (collection) {
@@ -30,7 +36,7 @@ const Category = (props) => {
         <Heading headerText={category} hasExpanded={false} />
         <div className={css.Backing}></div>
         <HyggeList
-          list={collection}
+          list={listWithSelected}
           wrap={true}
           clickHygge={clickHyggeHandler}
         />
@@ -43,20 +49,19 @@ const Category = (props) => {
 
 Category.propTypes = {
   collection: PropTypes.array,
-  onSetCollection: PropTypes.func.isRequired,
+  selectedIds: PropTypes.array,
   onSaveSelection: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
   return {
     collection: state.hygge.collection,
+    selectedIds: state.hygge.selectedIds,
   };
 };
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    onSetCollection: (newCollection) =>
-      dispatch(actions.setCollection(newCollection)),
     onSaveSelection: (selection) => dispatch(actions.saveSelection(selection)),
   };
 };

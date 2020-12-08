@@ -45,7 +45,7 @@ HyggeImage.propTypes = {
   attribution: PropTypes.string.isRequired,
   display: PropTypes.bool.isRequired,
   isExpanded: PropTypes.bool.isRequired,
-  isSelected: PropTypes.bool.isRequired,
+  isSelected: PropTypes.bool,
   isSmall: PropTypes.bool.isRequired,
   clicked: PropTypes.func.isRequired,
 };

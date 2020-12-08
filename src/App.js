@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import css from "./App.module.css";
-import useInstaller from "./hooks/useInstaller";
+import { useInstaller, useGetSelection } from "./hooks/index";
 import Menu from "./containers/Menu/Menu";
 import logo from "./assets/snowflake.png";
 import Hygge from "./containers/Hygge/Hygge";
@@ -11,6 +11,7 @@ import Category from "./containers/Category/Category";
 
 const App = () => {
   const [canInstall, installHandler] = useInstaller();
+  useGetSelection();
 
   const routes = (
     <Switch>
