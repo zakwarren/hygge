@@ -16,7 +16,7 @@ export const Category = (props) => {
     if (selectedIds && selectedIds.includes(id)) {
       select = selectedIds.filter((selId) => selId !== id);
     } else {
-      select = [...selectedIds, id];
+      select = selectedIds ? [...selectedIds, id] : [id];
     }
     const unique = [...new Set(select)];
     onSaveSelection(unique);

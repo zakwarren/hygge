@@ -35,8 +35,12 @@ export const getSelection = () => {
 
 export const saveSelection = (selectedIds) => {
   return (dispatch) => {
-    const idString = JSON.stringify(selectedIds);
-    localStorage.setItem(STORAGE, idString);
+    if (selectedIds.length === 0) {
+      localStorage.removeItem(STORAGE);
+    } else {
+      const idString = JSON.stringify(selectedIds);
+      localStorage.setItem(STORAGE, idString);
+    }
 
     dispatch(setSelectedIds(selectedIds));
   };

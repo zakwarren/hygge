@@ -41,7 +41,7 @@ const IMAGE_MAPPING = [
     id: 5,
     image: cabin2,
     attribution: "Photo by Olivier Guillard on Unsplash",
-    category: CATEGORIES.SEASONS,
+    category: CATEGORIES.seasons.name,
   },
   {
     id: 6,
