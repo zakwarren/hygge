@@ -72,7 +72,8 @@ function registerValidSW(swUrl, config) {
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
               toast.dark(
-                "An update is available and will be used after the next page reload."
+                "An update is available and will be used after the next page reload.",
+                { toastId: "sw-update" }
               );
 
               // Execute callback
@@ -83,7 +84,9 @@ function registerValidSW(swUrl, config) {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
-              toast.dark("Hygge is ready for offline use.");
+              toast.dark("Hygge is ready for offline use.", {
+                toastId: "sw-offline",
+              });
 
               // Execute callback
               if (config && config.onSuccess) {
