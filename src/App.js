@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import css from "./App.module.css";
 import { useInstaller, useGetSelection } from "./hooks/index";
@@ -27,6 +28,16 @@ const App = () => {
       <Menu canInstall={canInstall} install={installHandler} />
       <img className={css.Logo} src={logo} alt="Logo" />
       {routes}
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };
