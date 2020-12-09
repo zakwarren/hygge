@@ -68,6 +68,7 @@
   margin-top: 10vh;
   width: 120vh;
   height: 120vh;
+  position: absolute;
 }
 
 @media (min-width: 1200px) {
