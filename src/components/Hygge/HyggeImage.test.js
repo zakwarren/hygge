@@ -13,6 +13,7 @@ describe("<HyggeImage />", () => {
         display={true}
         isExpanded={false}
         clicked={jest.fn}
+        longClicked={jest.fn}
         image="test.png"
         attribution="Test"
         isSmall={false}

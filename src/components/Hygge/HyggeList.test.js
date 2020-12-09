@@ -24,10 +24,16 @@ describe("<HyggeList />", () => {
     },
   ];
   const clickFn = jest.fn;
+  const longClickFn = jest.fn;
 
   beforeEach(() => {
     wrapper = shallow(
-      <HyggeList list={list} wrap={false} clickHygge={clickFn} />
+      <HyggeList
+        list={list}
+        wrap={false}
+        clickHygge={clickFn}
+        longClickHygge={longClickFn}
+      />
     );
   });
 
