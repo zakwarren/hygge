@@ -16,10 +16,11 @@ const HyggeImage = (props) => {
     longClicked,
   } = props;
 
-  const longPressEvent = useLongPress(longClicked, clicked, {
+  const clickEvents = useLongPress(longClicked, clicked, {
     shouldPreventDefault: true,
     delay: 500,
   });
+  const clickHandler = longClicked ? clickEvents : { onClick: clicked };
 
   const classes = [css.HyggeImage];
   if (isExpanded) {
@@ -37,7 +38,7 @@ const HyggeImage = (props) => {
   }
 
   return (
-    <div className={classes.join(" ")} {...longPressEvent}>
+    <div className={classes.join(" ")} {...clickHandler}>
       <img className={imgClasses.join(" ")} src={image} alt={attribution} />
       {isExpanded ? (
         <span className={css.Attribution}>{attribution}</span>
@@ -55,7 +56,7 @@ HyggeImage.propTypes = {
   isSelected: PropTypes.bool,
   isSmall: PropTypes.bool.isRequired,
   clicked: PropTypes.func.isRequired,
-  longClicked: PropTypes.func.isRequired,
+  longClicked: PropTypes.func,
 };
 
 export default HyggeImage;
