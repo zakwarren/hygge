@@ -2,15 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import css from "./Category.module.css";
+import { CREATE } from "../../shared/categories";
 
-const Category = (props) => (
+const Category = ({ name, color, collection, onClick }) => (
   <div
     className={css.Circle}
-    style={{ backgroundColor: props.color }}
-    onClick={props.onClick}
+    style={{ backgroundColor: color, opacity: name === CREATE.name ? 1 : 0.25 }}
+    onClick={onClick}
   >
-    <h2 className={css.SubHeading}>{props.name}</h2>
-    <div className={css.Value}>x {props.collection.length}</div>
+    <h2 className={`${css.SubHeading} ${name === CREATE.name ? css.Big : ""}`}>
+      {name}
+    </h2>
+    {name === CREATE.name ? null : (
+      <div className={css.Value}>x {collection.length}</div>
+    )}
   </div>
 );
 

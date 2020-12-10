@@ -4,7 +4,6 @@
   height: 7rem;
   min-width: 3.5rem;
   background-color: #deddd9;
-  opacity: 0.25;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -25,6 +24,12 @@
   font-weight: normal;
   text-align: center;
   text-shadow: 0.25rem 0.06rem 0.25rem #e3dcdcdb;
+}
+
+.Big {
+  margin-top: -1rem;
+  color: #f6f6f6;
+  font-size: 6.5rem;
 }
 
 .Value {

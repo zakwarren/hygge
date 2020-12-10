@@ -5,6 +5,11 @@ export const ALL = {
   color: "#bd8e62",
 };
 
+export const CREATE = {
+  name: "+",
+  color: "#deddd9",
+};
+
 export const CATEGORIES = {
   surreal: {
     name: "Surreal",

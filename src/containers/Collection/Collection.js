@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import css from "./Collection.module.css";
 import * as actions from "../../store/actions/index";
-import { CATEGORIES, ALL } from "../../shared/categories";
+import { CATEGORIES, ALL, CREATE } from "../../shared/categories";
 import { getImages } from "../../shared/images";
 import CategoryList from "../../components/Collection/CategoryList";
 import Heading from "../../components/Heading/Heading";
@@ -34,6 +34,12 @@ export const Collection = (props) => {
     color: ALL.color,
     collection: allHygge,
     onClick: () => setCategory(ALL.name),
+  });
+  mappedCats.push({
+    name: CREATE.name,
+    color: CREATE.color,
+    collection: [],
+    onClick: () => history.push("/collection/add"),
   });
 
   return (
