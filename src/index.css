@@ -1,3 +1,15 @@
+:root {
+  --main: #e4d6c9;
+  --dark: #c4a589;
+  --light: #f3eae2;
+  --background: #faf7f3;
+  --warning: #db5b5b;
+  --disabled: #e0dfdf;
+  --highlight: #48d0e2;
+  --text-heading: #ded8d3;
+  --text-light: #f6f6f6;
+}
+
 * {
   box-sizing: border-box;
   font-family: "Helvetica Neue", "Quicksand", sans-serif;

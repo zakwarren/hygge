@@ -3,6 +3,7 @@
   margin: 20% 5% 0%;
   width: 90%;
   color: #ded8d3;
+  color: var(--text-heading);
   font-size: 2rem;
   font-weight: normal;
   text-align: left;
