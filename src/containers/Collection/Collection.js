@@ -4,13 +4,17 @@ import PropTypes from "prop-types";
 
 import css from "./Collection.module.css";
 import * as actions from "../../store/actions/index";
-import { CATEGORIES, ALL, CREATE } from "../../shared/categories";
+import { ALL, CREATE } from "../../shared/categories";
 import { getImages } from "../../shared/images";
 import CategoryList from "../../components/Collection/CategoryList";
 import Heading from "../../components/Heading/Heading";
 
 export const Collection = (props) => {
-  const { history, allHygge, onSetCollection } = props;
+  const { history, allHygge, categories, onSetCollection } = props;
+
+  if (!categories) {
+    return null;
+  }
 
   const setCategory = (category) => {
     const newCollection = getImages(category);
@@ -18,9 +22,9 @@ export const Collection = (props) => {
     history.push(`/collection/${category}`);
   };
 
-  const catKeys = Object.keys(CATEGORIES);
+  const catKeys = Object.keys(categories);
   const mappedCats = catKeys.map((catName) => {
-    const cat = CATEGORIES[catName];
+    const cat = categories[catName];
     const images = allHygge.filter((img) => img.category === cat.name);
     const catWithImgs = {
       ...cat,
@@ -55,12 +59,19 @@ export const Collection = (props) => {
 Collection.propTypes = {
   history: PropTypes.object.isRequired,
   allHygge: PropTypes.array.isRequired,
+  categories: PropTypes.objectOf(
+    PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+    })
+  ),
   onSetCollection: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
   return {
     allHygge: state.hygge.allHygge,
+    categories: state.hygge.categories,
   };
 };
 
