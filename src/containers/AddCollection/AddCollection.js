@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
@@ -9,8 +8,7 @@ import css from "./AddCollection.module.css";
 import * as actions from "../../store/actions/index";
 
 export const AddCollection = (props) => {
-  const { categories, onSetCategories } = props;
-  const { push } = useHistory();
+  const { history, categories, onSetCategories } = props;
 
   const initialValues = {
     name: "",
@@ -23,7 +21,7 @@ export const AddCollection = (props) => {
     const newCats = { ...categories, [values.name.toLowerCase()]: values };
     onSetCategories(newCats);
 
-    push("/collection");
+    history.push("/collection");
   };
 
   return (
@@ -82,6 +80,9 @@ export const AddCollection = (props) => {
 };
 
 AddCollection.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
   categories: PropTypes.objectOf(
     PropTypes.exact({
       name: PropTypes.string.isRequired,
