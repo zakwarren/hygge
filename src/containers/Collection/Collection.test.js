@@ -31,12 +31,19 @@ describe("<Collection />", () => {
     let wrapper;
     const history = { push: jest.fn };
     const allHygge = [{ category: "test" }];
+    const categories = { test: { name: "test", color: "#ffffff" } };
     const onSetCollection = jest.fn;
 
     beforeEach(() => {
       wrapper = shallow(
-        <Collection {...{ history, allHygge, onSetCollection }} />
+        <Collection {...{ history, allHygge, categories, onSetCollection }} />
       );
+    });
+
+    it("should render null if categories are null", () => {
+      wrapper.setProps({ categories: null });
+
+      expect(wrapper.isEmptyRender()).toBe(true);
     });
 
     it("should render a <main /> element with the correct class", () => {

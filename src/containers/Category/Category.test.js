@@ -25,6 +25,7 @@ describe("<Category />", () => {
       const componentDispatch = mapDispatchToProps(jest.fn);
 
       expect(typeof componentDispatch.onSaveSelection).toBe("function");
+      expect(typeof componentDispatch.onSetCollection).toBe("function");
     });
   });
 
@@ -37,11 +38,18 @@ describe("<Category />", () => {
     ];
     const selectedIds = [1];
     const onSaveSelection = jest.fn;
+    const onSetCollection = jest.fn;
 
     beforeEach(() => {
       wrapper = shallow(
         <Category
-          {...{ match, collection: allHygge, selectedIds, onSaveSelection }}
+          {...{
+            match,
+            collection: allHygge,
+            selectedIds,
+            onSaveSelection,
+            onSetCollection,
+          }}
         />
       );
     });
