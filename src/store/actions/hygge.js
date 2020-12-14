@@ -1,8 +1,9 @@
 import * as actionTypes from "./actionTypes";
 import { getImages } from "../../shared/images";
-import { RANDOM } from "../../shared/categories";
+import { RANDOM, CATEGORIES } from "../../shared/categories";
 
-export const STORAGE = "myHygge";
+export const STORED_SELECTION = "myHygge";
+export const STORED_CATEGORIES = "myCategories";
 
 export const setCollection = (collection) => {
   return {
@@ -20,7 +21,7 @@ export const setSelectedIds = (selectedIds) => {
 
 export const getSelection = () => {
   return (dispatch) => {
-    const idString = localStorage.getItem(STORAGE);
+    const idString = localStorage.getItem(STORED_SELECTION);
     const ids = idString ? JSON.parse(idString) : null;
     if (ids) {
       dispatch(setSelectedIds(ids));
@@ -36,12 +37,32 @@ export const getSelection = () => {
 export const saveSelection = (selectedIds) => {
   return (dispatch) => {
     if (selectedIds.length === 0) {
-      localStorage.removeItem(STORAGE);
+      localStorage.removeItem(STORED_SELECTION);
     } else {
       const idString = JSON.stringify(selectedIds);
-      localStorage.setItem(STORAGE, idString);
+      localStorage.setItem(STORED_SELECTION, idString);
     }
 
     dispatch(setSelectedIds(selectedIds));
+  };
+};
+
+export const getCategories = () => {
+  const cats = localStorage.getItem(STORED_CATEGORIES);
+  const categories = cats ? cats : CATEGORIES;
+
+  return {
+    type: actionTypes.SET_CATEGORIES,
+    categories: categories,
+  };
+};
+
+export const setCategories = (categories) => {
+  const cats = JSON.stringify(categories);
+  localStorage.setItem(STORED_CATEGORIES, cats);
+
+  return {
+    type: actionTypes.SET_CATEGORIES,
+    categories: categories,
   };
 };

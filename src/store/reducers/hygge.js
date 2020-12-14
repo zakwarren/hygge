@@ -3,6 +3,7 @@ import { updateObject } from "../../shared/utilities";
 import { getImages } from "../../shared/images";
 
 const initialState = {
+  categories: null,
   allHygge: getImages(),
   collection: null,
   selectedIds: null,
@@ -14,6 +15,8 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { collection: action.collection });
     case actionTypes.SET_SELECTED:
       return updateObject(state, { selectedIds: action.selectedIds });
+    case actionTypes.SET_CATEGORIES:
+      return updateObject(state, { categories: action.categories });
     default:
       return state;
   }
