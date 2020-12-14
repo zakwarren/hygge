@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
 import css from "./App.module.css";
-import { useInstaller, useGetSelection } from "./hooks/index";
+import { useInstaller, useLoadData } from "./hooks/index";
 import Menu from "./containers/Menu/Menu";
 import logo from "./assets/snowflake.png";
 import Hygge from "./containers/Hygge/Hygge";
@@ -14,7 +14,7 @@ import AddCollection from "./containers/AddCollection/AddCollection";
 
 const App = () => {
   const [canInstall, installHandler] = useInstaller();
-  useGetSelection();
+  useLoadData();
 
   const routes = (
     <Switch>

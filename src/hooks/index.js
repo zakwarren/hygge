@@ -1,3 +1,3 @@
 export { useInstaller } from "./useInstaller";
-export { useGetSelection } from "./useGetSelection";
+export { useLoadData } from "./useLoadData";
 export { useLongPress } from "./useLongPress";
