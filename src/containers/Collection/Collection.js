@@ -10,7 +10,13 @@ import CategoryList from "../../components/Collection/CategoryList";
 import Heading from "../../components/Heading/Heading";
 
 export const Collection = (props) => {
-  const { history, allHygge, categories, onSetCollection } = props;
+  const {
+    history,
+    allHygge,
+    categories,
+    onSetCollection,
+    onSetCategories,
+  } = props;
 
   if (!categories) {
     return null;
@@ -20,6 +26,12 @@ export const Collection = (props) => {
     const newCollection = getImages(category);
     onSetCollection(newCollection);
     history.push(`/collection/${category}`);
+  };
+
+  const removeCategory = (categoryName) => {
+    const filteredCats = { ...categories };
+    delete filteredCats[categoryName.toLowerCase()];
+    onSetCategories(filteredCats);
   };
 
   const catKeys = Object.keys(categories);
@@ -50,7 +62,7 @@ export const Collection = (props) => {
     <main className={css.Collection}>
       <Heading headerText="Collection" hasExpanded={false} />
       <section className={css.Categories}>
-        <CategoryList list={mappedCats} />
+        <CategoryList list={mappedCats} removeCategory={removeCategory} />
       </section>
     </main>
   );
@@ -66,6 +78,7 @@ Collection.propTypes = {
     })
   ),
   onSetCollection: PropTypes.func.isRequired,
+  onSetCategories: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
@@ -79,6 +92,8 @@ export const mapDispatchToProps = (dispatch) => {
   return {
     onSetCollection: (newCollection) =>
       dispatch(actions.setCollection(newCollection)),
+    onSetCategories: (newCategories) =>
+      dispatch(actions.setCategories(newCategories)),
   };
 };
 

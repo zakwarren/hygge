@@ -4,16 +4,17 @@ import PropTypes from "prop-types";
 import css from "./CategoryList.module.css";
 import Category from "./Category";
 
-const CategoryList = (props) => (
+const CategoryList = ({ list, removeCategory }) => (
   <section className={css.Collections}>
-    {props.list.map((el) => (
-      <Category key={el.name} {...el} />
+    {list.map((el) => (
+      <Category key={el.name} {...el} removeCategory={removeCategory} />
     ))}
   </section>
 );
 
 CategoryList.propTypes = {
   list: PropTypes.array.isRequired,
+  removeCategory: PropTypes.func.isRequired,
 };
 
 export default CategoryList;

@@ -58,11 +58,11 @@ export const getCategories = () => {
 };
 
 export const setCategories = (categories) => {
-  if (categories) {
+  if (JSON.stringify(categories) === JSON.stringify(CATEGORIES)) {
+    localStorage.removeItem(STORED_CATEGORIES);
+  } else {
     const cats = JSON.stringify(categories);
     localStorage.setItem(STORED_CATEGORIES, cats);
-  } else {
-    localStorage.removeItem(STORED_CATEGORIES);
   }
 
   return {

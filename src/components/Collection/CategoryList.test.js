@@ -22,7 +22,7 @@ describe("<CategoryList />", () => {
   ];
 
   beforeEach(() => {
-    wrapper = shallow(<CategoryList list={list} />);
+    wrapper = shallow(<CategoryList list={list} removeCategory={jest.fn} />);
   });
 
   it("should render two <Category /> elements", () => {

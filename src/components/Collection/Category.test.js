@@ -14,6 +14,7 @@ describe("<Category />", () => {
         color="#db5b5b"
         collection={[{ id: 1 }]}
         onClick={jest.fn}
+        removeCategory={jest.fn}
       />
     );
   });

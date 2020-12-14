@@ -24,6 +24,7 @@ describe("<Collection />", () => {
       const componentDispatch = mapDispatchToProps(jest.fn);
 
       expect(typeof componentDispatch.onSetCollection).toBe("function");
+      expect(typeof componentDispatch.onSetCategories).toBe("function");
     });
   });
 
@@ -33,10 +34,19 @@ describe("<Collection />", () => {
     const allHygge = [{ category: "test" }];
     const categories = { test: { name: "test", color: "#ffffff" } };
     const onSetCollection = jest.fn;
+    const onSetCategories = jest.fn;
 
     beforeEach(() => {
       wrapper = shallow(
-        <Collection {...{ history, allHygge, categories, onSetCollection }} />
+        <Collection
+          {...{
+            history,
+            allHygge,
+            categories,
+            onSetCollection,
+            onSetCategories,
+          }}
+        />
       );
     });
 
