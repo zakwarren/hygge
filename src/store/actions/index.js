@@ -1,1 +1,7 @@
-export { setCollection, getSelection, saveSelection } from "./hygge";
+export {
+  setCollection,
+  getSelection,
+  saveSelection,
+  getCategories,
+  setCategories,
+} from "./hygge";

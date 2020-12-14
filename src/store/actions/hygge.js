@@ -49,7 +49,7 @@ export const saveSelection = (selectedIds) => {
 
 export const getCategories = () => {
   const cats = localStorage.getItem(STORED_CATEGORIES);
-  const categories = cats ? cats : CATEGORIES;
+  const categories = cats ? JSON.parse(cats) : CATEGORIES;
 
   return {
     type: actionTypes.SET_CATEGORIES,
@@ -58,8 +58,12 @@ export const getCategories = () => {
 };
 
 export const setCategories = (categories) => {
-  const cats = JSON.stringify(categories);
-  localStorage.setItem(STORED_CATEGORIES, cats);
+  if (categories) {
+    const cats = JSON.stringify(categories);
+    localStorage.setItem(STORED_CATEGORIES, cats);
+  } else {
+    localStorage.removeItem(STORED_CATEGORIES);
+  }
 
   return {
     type: actionTypes.SET_CATEGORIES,

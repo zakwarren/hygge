@@ -1,19 +1,29 @@
 import React from "react";
+import { useHistory } from "react-router";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import * as yup from "yup";
 
 import css from "./AddCollection.module.css";
+import * as actions from "../../store/actions/index";
 
-const AddCollection = () => {
+export const AddCollection = (props) => {
+  const { categories, onSetCategories } = props;
+  const { push } = useHistory();
+
   const initialValues = {
     name: "",
-    colour: "#ffffff",
+    color: "#ffffff",
   };
   const validationSchema = yup.object().shape({
     name: yup.string().required("Please enter a valid collection name"),
   });
   const onSubmit = (values) => {
-    console.log(values);
+    const newCats = { ...categories, [values.name.toLowerCase()]: values };
+    onSetCategories(newCats);
+
+    push("/collection");
   };
 
   return (
@@ -27,7 +37,9 @@ const AddCollection = () => {
           return (
             <Form className={css.Form}>
               <div className={css.InputContainer}>
-                <label className={css.Label}>Collection Name</label>
+                <label className={css.Label} htmlFor="name">
+                  Collection Name
+                </label>
                 <Field
                   className={css.Input}
                   type="input"
@@ -39,15 +51,17 @@ const AddCollection = () => {
                 ) : null}
               </div>
               <div className={css.InputContainer}>
-                <label className={css.Label}>Colour</label>
+                <label className={css.Label} htmlFor="color">
+                  Colour
+                </label>
                 <Field
                   className={css.Input}
                   type="color"
-                  id="colour"
-                  name="colour"
+                  id="color"
+                  name="color"
                 />
-                {errors.colour && touched.colour ? (
-                  <div className={css.ValidationError}>{errors.colour}</div>
+                {errors.color && touched.color ? (
+                  <div className={css.ValidationError}>{errors.color}</div>
                 ) : null}
               </div>
               <div className={css.Controls}>
@@ -67,4 +81,27 @@ const AddCollection = () => {
   );
 };
 
-export default AddCollection;
+AddCollection.propTypes = {
+  categories: PropTypes.objectOf(
+    PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+    })
+  ),
+  onSetCategories: PropTypes.func.isRequired,
+};
+
+export const mapStateToProps = (state) => {
+  return {
+    categories: state.hygge.categories,
+  };
+};
+
+export const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetCategories: (newCategories) =>
+      dispatch(actions.setCategories(newCategories)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddCollection);
