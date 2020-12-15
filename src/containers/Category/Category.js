@@ -20,6 +20,13 @@ export const Category = (props) => {
   const [hasExpanded, setHasExpanded] = useState(false);
 
   const clickHandler = (id) => {
+    const newCollection = expandHygge(collection, id);
+    onSetCollection(newCollection);
+    const areExpanded = newCollection.some((hg) => hg.isExpanded);
+    setHasExpanded(areExpanded);
+  };
+
+  const longClickHandler = (id) => {
     let select = [];
     if (selectedIds && selectedIds.includes(id)) {
       select = selectedIds.filter((selId) => selId !== id);
@@ -28,13 +35,6 @@ export const Category = (props) => {
     }
     const unique = [...new Set(select)];
     onSaveSelection(unique);
-  };
-
-  const longClickHandler = (id) => {
-    const newCollection = expandHygge(collection, id);
-    onSetCollection(newCollection);
-    const areExpanded = newCollection.some((hg) => hg.isExpanded);
-    setHasExpanded(areExpanded);
   };
 
   const listWithSelected = collection
