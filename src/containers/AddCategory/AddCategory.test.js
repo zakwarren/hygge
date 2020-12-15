@@ -1,15 +1,15 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import css from "./AddCollection.module.css";
+import css from "./AddCategory.module.css";
 import {
-  AddCollection,
+  AddCategory,
   mapStateToProps,
   mapDispatchToProps,
-} from "./AddCollection";
+} from "./AddCategory";
 import { Formik } from "formik";
 
-describe("<AddCollection />", () => {
+describe("<AddCategory />", () => {
   describe("mapStateToProps", () => {
     it("should map the state to props correctly", () => {
       const hygge = {
@@ -38,7 +38,7 @@ describe("<AddCollection />", () => {
 
     beforeEach(() => {
       wrapper = shallow(
-        <AddCollection {...{ history, categories, onSetCategories }} />
+        <AddCategory {...{ history, categories, onSetCategories }} />
       );
     });
 

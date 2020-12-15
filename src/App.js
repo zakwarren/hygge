@@ -10,7 +10,7 @@ import logo from "./assets/snowflake.png";
 import Hygge from "./containers/Hygge/Hygge";
 import Collection from "./containers/Collection/Collection";
 import Category from "./containers/Category/Category";
-import AddCollection from "./containers/AddCollection/AddCollection";
+import AddCategory from "./containers/AddCategory/AddCategory";
 
 const App = () => {
   const [canInstall, installHandler] = useInstaller();
@@ -18,7 +18,7 @@ const App = () => {
 
   const routes = (
     <Switch>
-      <Route path="/collection/add" exact component={AddCollection} />
+      <Route path="/collection/add" exact component={AddCategory} />
       <Route path="/collection/:category" exact component={Category} />
       <Route path="/collection" exact component={Collection} />
       <Route path="/" exact component={Hygge} />

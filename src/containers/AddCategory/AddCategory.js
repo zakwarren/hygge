@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import * as yup from "yup";
 
-import css from "./AddCollection.module.css";
+import css from "./AddCategory.module.css";
 import * as actions from "../../store/actions/index";
 
-export const AddCollection = (props) => {
+export const AddCategory = (props) => {
   const { history, categories, onSetCategories } = props;
 
   const initialValues = {
@@ -79,7 +79,7 @@ export const AddCollection = (props) => {
   );
 };
 
-AddCollection.propTypes = {
+AddCategory.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
@@ -105,4 +105,4 @@ export const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddCollection);
+export default connect(mapStateToProps, mapDispatchToProps)(AddCategory);
