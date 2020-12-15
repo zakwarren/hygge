@@ -5,7 +5,7 @@ import { CATEGORIES } from "../../shared/categories";
 describe("hygge actions", () => {
   it("should return set all hygge", () => {
     const allHygge = ["test"];
-    const act = actions.setAllHygge();
+    const act = actions.setAllHygge(allHygge);
 
     expect(act.type).toEqual(actionTypes.SET_ALL_HYGGE);
     expect(act.allHygge).toEqual(allHygge);
