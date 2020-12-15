@@ -1,10 +1,9 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../shared/utilities";
-import { getImages } from "../../shared/images";
 
 const initialState = {
   categories: null,
-  allHygge: getImages(),
+  allHygge: null,
   collection: null,
   selectedIds: null,
 };

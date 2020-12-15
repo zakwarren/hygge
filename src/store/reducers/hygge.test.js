@@ -3,6 +3,7 @@ import reducer from "./hygge";
 
 describe("hygge reducer", () => {
   const initialState = {
+    categories: null,
     allHygge: null,
     collection: null,
     selectedIds: null,
@@ -32,5 +33,15 @@ describe("hygge reducer", () => {
     });
 
     expect(newState.selectedIds).toEqual(selectedIds);
+  });
+
+  it("should set the categories", () => {
+    const categories = ["test"];
+    const newState = reducer(initialState, {
+      type: actionTypes.SET_CATEGORIES,
+      categories: categories,
+    });
+
+    expect(newState.categories).toEqual(categories);
   });
 });
