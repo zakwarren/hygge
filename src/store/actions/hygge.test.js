@@ -3,6 +3,14 @@ import * as actions from "./hygge";
 import { CATEGORIES } from "../../shared/categories";
 
 describe("hygge actions", () => {
+  it("should return set all hygge", () => {
+    const allHygge = ["test"];
+    const act = actions.setAllHygge();
+
+    expect(act.type).toEqual(actionTypes.SET_ALL_HYGGE);
+    expect(act.allHygge).toEqual(allHygge);
+  });
+
   it("should return set collection", () => {
     const collection = "test";
     const act = actions.setCollection(collection);

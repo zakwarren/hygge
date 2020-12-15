@@ -1,9 +1,28 @@
 import * as actionTypes from "./actionTypes";
-import { getImages } from "../../shared/images";
+import { filterImages, IMAGE_MAPPING } from "../../shared/images";
 import { RANDOM, CATEGORIES } from "../../shared/categories";
 
 export const STORED_SELECTION = "myHygge";
 export const STORED_CATEGORIES = "myCategories";
+
+export const setAllHygge = (imageMapping) => {
+  return {
+    type: actionTypes.SET_ALL_HYGGE,
+    allHygge: imageMapping,
+  };
+};
+
+const getImages = () => {
+  const allHygge = filterImages(IMAGE_MAPPING);
+  return allHygge;
+};
+
+export const getAllHygge = () => {
+  return (dispatch) => {
+    const allHygge = getImages();
+    dispatch(setAllHygge(allHygge));
+  };
+};
 
 export const setCollection = (collection) => {
   return {
@@ -20,15 +39,20 @@ export const setSelectedIds = (selectedIds) => {
 };
 
 export const getSelection = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    let { allHygge } = getState().hygge;
+    if (!allHygge) {
+      allHygge = getImages();
+    }
+
     const idString = localStorage.getItem(STORED_SELECTION);
     const ids = idString ? JSON.parse(idString) : null;
     if (ids) {
       dispatch(setSelectedIds(ids));
-      const collection = getImages(null, ids);
+      const collection = filterImages(allHygge, null, ids);
       dispatch(setCollection(collection));
     } else {
-      const collection = getImages(RANDOM);
+      const collection = filterImages(allHygge, RANDOM);
       dispatch(setCollection(collection));
     }
   };

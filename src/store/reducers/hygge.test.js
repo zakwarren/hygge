@@ -15,6 +15,16 @@ describe("hygge reducer", () => {
     expect(newState).toEqual(initialState);
   });
 
+  it("should set allHygge", () => {
+    const allHygge = ["test"];
+    const newState = reducer(initialState, {
+      type: actionTypes.SET_ALL_HYGGE,
+      allHygge: allHygge,
+    });
+
+    expect(newState.allHygge).toEqual(allHygge);
+  });
+
   it("should set the collection", () => {
     const collection = "test";
     const newState = reducer(initialState, {

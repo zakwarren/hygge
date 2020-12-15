@@ -12,7 +12,7 @@ import snow1 from "../assets/images/emily-toycen-jd_YFWRkOqQ-unsplash.jpg";
 
 const random_amount = 4;
 
-const IMAGE_MAPPING = [
+export const IMAGE_MAPPING = [
   {
     id: 1,
     image: blanket1,
@@ -69,18 +69,18 @@ const IMAGE_MAPPING = [
   },
 ];
 
-export const getImages = (category, selection) => {
+export const filterImages = (allImages, category, selection) => {
   let filtered;
 
   if (category === RANDOM) {
-    const shuffled = IMAGE_MAPPING.sort(() => 0.5 - Math.random());
+    const shuffled = allImages.sort(() => 0.5 - Math.random());
     filtered = shuffled.slice(0, random_amount);
   } else if (category && category !== ALL.name) {
-    filtered = IMAGE_MAPPING.filter((map) => map.category === category);
+    filtered = allImages.filter((map) => map.category === category);
   } else if (selection && selection.length > 0) {
-    filtered = IMAGE_MAPPING.filter((map) => selection.includes(map.id));
+    filtered = allImages.filter((map) => selection.includes(map.id));
   } else {
-    filtered = IMAGE_MAPPING;
+    filtered = allImages;
   }
 
   const images = filtered.map((map) => {

@@ -1,4 +1,6 @@
 export {
+  setAllHygge,
+  getAllHygge,
   setCollection,
   getSelection,
   saveSelection,

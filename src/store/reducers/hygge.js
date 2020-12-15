@@ -10,6 +10,8 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.SET_ALL_HYGGE:
+      return updateObject(state, { allHygge: action.allHygge });
     case actionTypes.SET_COLLECTION:
       return updateObject(state, { collection: action.collection });
     case actionTypes.SET_SELECTED:
