@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
@@ -9,6 +9,7 @@ import css from "./AddImage.module.css";
 
 export const AddImage = (props) => {
   const { categories } = props;
+  const imgRef = useRef();
 
   if (!categories) {
     return null;
@@ -26,7 +27,23 @@ export const AddImage = (props) => {
     category: yup.string().required("Please select a valid category"),
   });
   const onSubmit = (values) => {
-    console.log(values);
+    const imgField = document.getElementById("image");
+    const file = imgField.files[0];
+    const reader = new FileReader();
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+
+    reader.addEventListener(
+      "load",
+      () => {
+        imgRef.current.src = reader.result;
+        values.image = reader.result;
+        console.log(values);
+      },
+      false
+    );
   };
 
   return (
@@ -53,6 +70,11 @@ export const AddImage = (props) => {
                 {errors.name && touched.name ? (
                   <div className={css.ValidationError}>{errors.image}</div>
                 ) : null}
+                <img
+                  ref={imgRef}
+                  className={css.UploadedImage}
+                  alt="Uploaded file"
+                />
               </div>
               <div className={css.InputContainer}>
                 <label className={css.Label} htmlFor="attribution">
