@@ -5,17 +5,18 @@ import { Formik, Field, Form } from "formik";
 import * as yup from "yup";
 
 import css from "./AddImage.module.css";
-// import * as actions from "../../store/actions/index";
+import * as actions from "../../store/actions/index";
 
 export const AddImage = (props) => {
-  const { categories } = props;
+  const { history, categories, onSaveNewHygge } = props;
   const imgRef = useRef();
 
   if (!categories) {
     return null;
   }
 
-  const catArray = Object.keys(categories);
+  const catKeys = Object.keys(categories);
+  const catArray = catKeys.map((cat) => categories[cat].name);
   const initialValues = {
     image: "",
     attribution: "",
@@ -39,8 +40,8 @@ export const AddImage = (props) => {
       "load",
       () => {
         imgRef.current.src = reader.result;
-        values.image = reader.result;
-        console.log(values);
+        onSaveNewHygge(reader.result, values.attribution, values.category);
+        history.push("/collection");
       },
       false
     );
@@ -130,12 +131,16 @@ export const AddImage = (props) => {
 };
 
 AddImage.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
   categories: PropTypes.objectOf(
     PropTypes.exact({
       name: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
     })
   ),
+  onSaveNewHygge: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
@@ -145,7 +150,10 @@ export const mapStateToProps = (state) => {
 };
 
 export const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    onSaveNewHygge: (image, attribution, category) =>
+      dispatch(actions.saveNewHygge(image, attribution, category)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddImage);

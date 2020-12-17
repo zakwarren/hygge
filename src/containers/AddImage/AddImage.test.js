@@ -18,20 +18,24 @@ describe("<AddImage />", () => {
     });
   });
 
-  // describe("mapDispatchToProps", () => {
-  //   it("should map the dispatch functions to props correctly", () => {
-  //     const componentDispatch = mapDispatchToProps(jest.fn);
+  describe("mapDispatchToProps", () => {
+    it("should map the dispatch functions to props correctly", () => {
+      const componentDispatch = mapDispatchToProps(jest.fn);
 
-  //     expect(typeof componentDispatch.onSetCategories).toBe("function");
-  //   });
-  // });
+      expect(typeof componentDispatch.onSaveNewHygge).toBe("function");
+    });
+  });
 
   describe("display", () => {
     let wrapper;
+    const history = { push: jest.fn };
     const categories = { test: { name: "test", color: "#ffffff" } };
+    const onSaveNewHygge = jest.fn;
 
     beforeEach(() => {
-      wrapper = shallow(<AddImage {...{ categories }} />);
+      wrapper = shallow(
+        <AddImage {...{ history, categories, onSaveNewHygge }} />
+      );
     });
 
     it("should render a <section /> element with the correct class", () => {

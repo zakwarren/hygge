@@ -24,6 +24,27 @@ export const getAllHygge = () => {
   };
 };
 
+export const saveNewHygge = (image, attribution, category) => {
+  return (dispatch, getState) => {
+    const { allHygge } = getState().hygge;
+    const newId =
+      Math.max.apply(
+        null,
+        allHygge.map((hygge) => hygge.id)
+      ) + 1;
+    const updatedHygge = [
+      ...allHygge,
+      {
+        id: newId,
+        image: image,
+        attribution: attribution,
+        category: category,
+      },
+    ];
+    dispatch(setAllHygge(updatedHygge));
+  };
+};
+
 export const setCollection = (collection) => {
   return {
     type: actionTypes.SET_COLLECTION,
