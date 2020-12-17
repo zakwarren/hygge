@@ -11,6 +11,7 @@ import Hygge from "./containers/Hygge/Hygge";
 import Collection from "./containers/Collection/Collection";
 import Category from "./containers/Category/Category";
 import AddCategory from "./containers/AddCategory/AddCategory";
+import AddImage from "./containers/AddImage/AddImage";
 
 const App = () => {
   const [canInstall, installHandler] = useInstaller();
@@ -21,6 +22,7 @@ const App = () => {
       <Route path="/collection/add" exact component={AddCategory} />
       <Route path="/collection/:category" exact component={Category} />
       <Route path="/collection" exact component={Collection} />
+      <Route path="/add" exact component={AddImage} />
       <Route path="/" exact component={Hygge} />
       <Redirect to="/" />
     </Switch>
