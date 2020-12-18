@@ -13,20 +13,22 @@ export const setAllHygge = (imageMapping) => {
   };
 };
 
-const getImages = () => {
-  const allHygge = filterImages(IMAGE_MAPPING);
+const getImages = async () => {
+  const storedImages = await db.table(TABLE_NAMES.images).toArray();
+  const imageMapping = storedImages.length > 1 ? storedImages : IMAGE_MAPPING;
+  const allHygge = filterImages(imageMapping);
   return allHygge;
 };
 
 export const getAllHygge = () => {
-  return (dispatch) => {
-    const allHygge = getImages();
+  return async (dispatch) => {
+    const allHygge = await getImages();
     dispatch(setAllHygge(allHygge));
   };
 };
 
 export const saveNewHygge = (image, attribution, category) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const { allHygge } = getState().hygge;
     const allIds = allHygge.map((hygge) => hygge.id);
     const newId = Math.max.apply(null, allIds) + 1;
@@ -39,6 +41,10 @@ export const saveNewHygge = (image, attribution, category) => {
         category: category,
       },
     ];
+
+    await db.table(TABLE_NAMES.images).clear();
+    await db.table(TABLE_NAMES.images).bulkAdd(updatedHygge);
+
     dispatch(setAllHygge(updatedHygge));
   };
 };
@@ -58,10 +64,10 @@ export const setSelectedIds = (selectedIds) => {
 };
 
 export const getSelection = () => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     let { allHygge } = getState().hygge;
     if (!allHygge) {
-      allHygge = getImages();
+      allHygge = await getImages();
     }
 
     const idString = localStorage.getItem(STORED_SELECTION);

@@ -18,7 +18,7 @@ export const Collection = (props) => {
     onSaveCategories,
   } = props;
 
-  if (!categories) {
+  if (!categories || !allHygge) {
     return null;
   }
 
