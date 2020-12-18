@@ -1,6 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import { filterImages, IMAGE_MAPPING } from "../../shared/images";
 import { RANDOM, CATEGORIES } from "../../shared/categories";
+import db, { TABLE_NAMES } from "../db";
 
 export const STORED_SELECTION = "myHygge";
 export const STORED_CATEGORIES = "myCategories";
@@ -27,11 +28,8 @@ export const getAllHygge = () => {
 export const saveNewHygge = (image, attribution, category) => {
   return (dispatch, getState) => {
     const { allHygge } = getState().hygge;
-    const newId =
-      Math.max.apply(
-        null,
-        allHygge.map((hygge) => hygge.id)
-      ) + 1;
+    const allIds = allHygge.map((hygge) => hygge.id);
+    const newId = Math.max.apply(null, allIds) + 1;
     const updatedHygge = [
       ...allHygge,
       {
@@ -93,25 +91,34 @@ export const saveSelection = (selectedIds) => {
 };
 
 export const getCategories = () => {
-  const cats = localStorage.getItem(STORED_CATEGORIES);
-  const categories = cats ? JSON.parse(cats) : CATEGORIES;
+  return async (dispatch) => {
+    const cats = await db.table(TABLE_NAMES.categories).toArray();
+    const catObj = {};
+    cats.forEach((cat) => {
+      catObj[cat.category] = { name: cat.name, color: cat.color };
+    });
+    const categories = cats.length > 0 ? catObj : CATEGORIES;
+    dispatch(setCategories(categories));
+  };
+};
 
+export const setCategories = (categories) => {
   return {
     type: actionTypes.SET_CATEGORIES,
     categories: categories,
   };
 };
 
-export const setCategories = (categories) => {
-  if (JSON.stringify(categories) === JSON.stringify(CATEGORIES)) {
-    localStorage.removeItem(STORED_CATEGORIES);
-  } else {
-    const cats = JSON.stringify(categories);
-    localStorage.setItem(STORED_CATEGORIES, cats);
-  }
+export const saveCategories = (categories) => {
+  return async (dispatch) => {
+    const catKeys = Object.keys(categories);
+    const cats = catKeys.map((cat, index) => {
+      return { id: index, category: cat, ...categories[cat] };
+    });
 
-  return {
-    type: actionTypes.SET_CATEGORIES,
-    categories: categories,
+    await db.table(TABLE_NAMES.categories).clear();
+    await db.table(TABLE_NAMES.categories).bulkAdd(cats);
+
+    dispatch(setCategories(categories));
   };
 };

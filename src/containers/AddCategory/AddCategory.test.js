@@ -26,7 +26,7 @@ describe("<AddCategory />", () => {
     it("should map the dispatch functions to props correctly", () => {
       const componentDispatch = mapDispatchToProps(jest.fn);
 
-      expect(typeof componentDispatch.onSetCategories).toBe("function");
+      expect(typeof componentDispatch.onSaveCategories).toBe("function");
     });
   });
 
@@ -34,11 +34,11 @@ describe("<AddCategory />", () => {
     let wrapper;
     const history = { push: jest.fn };
     const categories = { test: { name: "test", color: "#ffffff" } };
-    const onSetCategories = jest.fn;
+    const onSaveCategories = jest.fn;
 
     beforeEach(() => {
       wrapper = shallow(
-        <AddCategory {...{ history, categories, onSetCategories }} />
+        <AddCategory {...{ history, categories, onSaveCategories }} />
       );
     });
 

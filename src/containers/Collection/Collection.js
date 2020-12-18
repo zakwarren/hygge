@@ -15,7 +15,7 @@ export const Collection = (props) => {
     allHygge,
     categories,
     onSetCollection,
-    onSetCategories,
+    onSaveCategories,
   } = props;
 
   if (!categories) {
@@ -31,7 +31,7 @@ export const Collection = (props) => {
   const removeCategory = (categoryName) => {
     const filteredCats = { ...categories };
     delete filteredCats[categoryName.toLowerCase()];
-    onSetCategories(filteredCats);
+    onSaveCategories(filteredCats);
   };
 
   const catKeys = Object.keys(categories);
@@ -70,7 +70,7 @@ export const Collection = (props) => {
 
 Collection.propTypes = {
   history: PropTypes.object.isRequired,
-  allHygge: PropTypes.array.isRequired,
+  allHygge: PropTypes.array,
   categories: PropTypes.objectOf(
     PropTypes.exact({
       name: PropTypes.string.isRequired,
@@ -78,7 +78,7 @@ Collection.propTypes = {
     })
   ),
   onSetCollection: PropTypes.func.isRequired,
-  onSetCategories: PropTypes.func.isRequired,
+  onSaveCategories: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
@@ -92,8 +92,8 @@ export const mapDispatchToProps = (dispatch) => {
   return {
     onSetCollection: (newCollection) =>
       dispatch(actions.setCollection(newCollection)),
-    onSetCategories: (newCategories) =>
-      dispatch(actions.setCategories(newCategories)),
+    onSaveCategories: (newCategories) =>
+      dispatch(actions.saveCategories(newCategories)),
   };
 };
 

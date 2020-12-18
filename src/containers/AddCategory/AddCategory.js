@@ -8,7 +8,7 @@ import css from "./AddCategory.module.css";
 import * as actions from "../../store/actions/index";
 
 export const AddCategory = (props) => {
-  const { history, categories, onSetCategories } = props;
+  const { history, categories, onSaveCategories } = props;
 
   const initialValues = {
     name: "",
@@ -19,7 +19,7 @@ export const AddCategory = (props) => {
   });
   const onSubmit = (values) => {
     const newCats = { ...categories, [values.name.toLowerCase()]: values };
-    onSetCategories(newCats);
+    onSaveCategories(newCats);
 
     history.push("/collection");
   };
@@ -89,7 +89,7 @@ AddCategory.propTypes = {
       color: PropTypes.string.isRequired,
     })
   ),
-  onSetCategories: PropTypes.func.isRequired,
+  onSaveCategories: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
@@ -100,8 +100,8 @@ export const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    onSetCategories: (newCategories) =>
-      dispatch(actions.setCategories(newCategories)),
+    onSaveCategories: (newCategories) =>
+      dispatch(actions.saveCategories(newCategories)),
   };
 };
 

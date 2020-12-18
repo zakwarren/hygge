@@ -6,5 +6,5 @@ export {
   getSelection,
   saveSelection,
   getCategories,
-  setCategories,
+  saveCategories,
 } from "./hygge";
