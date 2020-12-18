@@ -27,13 +27,6 @@ describe("hygge actions", () => {
     expect(act.selectedIds).toEqual(selectedIds);
   });
 
-  it("should return get categories and the categories", () => {
-    const act = actions.getCategories();
-
-    expect(act.type).toEqual(actionTypes.SET_CATEGORIES);
-    expect(act.categories).toEqual(CATEGORIES);
-  });
-
   it("should return set categories and the categories", () => {
     const cats = { test: "test" };
     const act = actions.setCategories(cats);

@@ -26,6 +26,7 @@ describe("<Category />", () => {
 
       expect(typeof componentDispatch.onSaveSelection).toBe("function");
       expect(typeof componentDispatch.onSetCollection).toBe("function");
+      expect(typeof componentDispatch.onRemoveHygge).toBe("function");
     });
   });
 
@@ -39,6 +40,7 @@ describe("<Category />", () => {
     const selectedIds = [1];
     const onSaveSelection = jest.fn;
     const onSetCollection = jest.fn;
+    const onRemoveHygge = jest.fn;
 
     beforeEach(() => {
       wrapper = shallow(
@@ -49,6 +51,7 @@ describe("<Category />", () => {
             selectedIds,
             onSaveSelection,
             onSetCollection,
+            onRemoveHygge,
           }}
         />
       );
