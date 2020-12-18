@@ -12,7 +12,9 @@ export const Hygge = (props) => {
   const { collection, onGetSelection, onSetCollection } = props;
   const [hasExpanded, setHasExpanded] = useState(false);
 
-  useEffect(() => onGetSelection(), [onGetSelection]);
+  useEffect(() => {
+    onGetSelection();
+  }, [onGetSelection]);
 
   const clickHyggeHandler = (id) => {
     const newCollection = expandHygge(collection, id);

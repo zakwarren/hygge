@@ -16,6 +16,7 @@ export const Category = (props) => {
     selectedIds,
     onSaveSelection,
     onSetCollection,
+    onRemoveHygge,
   } = props;
   const [hasExpanded, setHasExpanded] = useState(false);
 
@@ -37,6 +38,13 @@ export const Category = (props) => {
     onSaveSelection(unique);
   };
 
+  const removeHygge = (id) => {
+    onRemoveHygge(id);
+
+    const newCollection = collection.filter((hg) => hg.id !== id);
+    onSetCollection(newCollection);
+  };
+
   const listWithSelected = collection
     ? collection.map((map) => {
         const selected = selectedIds && selectedIds.includes(map.id);
@@ -55,6 +63,7 @@ export const Category = (props) => {
           wrap={true}
           clickHygge={clickHandler}
           longClickHygge={longClickHandler}
+          removeHygge={removeHygge}
         />
       </main>
     );
@@ -72,6 +81,7 @@ Category.propTypes = {
   selectedIds: PropTypes.array,
   onSaveSelection: PropTypes.func.isRequired,
   onSetCollection: PropTypes.func.isRequired,
+  onRemoveHygge: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
@@ -86,6 +96,7 @@ export const mapDispatchToProps = (dispatch) => {
     onSaveSelection: (selection) => dispatch(actions.saveSelection(selection)),
     onSetCollection: (newCollection) =>
       dispatch(actions.setCollection(newCollection)),
+    onRemoveHygge: (id) => dispatch(actions.removeHygge(id)),
   };
 };
 

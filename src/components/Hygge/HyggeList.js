@@ -5,7 +5,7 @@ import css from "./HyggeList.module.css";
 import HyggeImage from "./HyggeImage";
 
 const HyggeList = (props) => {
-  const { list, wrap, clickHygge, longClickHygge } = props;
+  const { list, wrap, clickHygge, longClickHygge, removeHygge } = props;
 
   const classes = wrap ? `${css.HyggeList} ${css.Wrap}` : css.HyggeList;
 
@@ -18,6 +18,7 @@ const HyggeList = (props) => {
           {...el}
           clicked={() => clickHygge(el.id)}
           longClicked={longClickHygge ? () => longClickHygge(el.id) : null}
+          removeHygge={removeHygge}
         />
       ))}
     </div>
@@ -29,6 +30,7 @@ HyggeList.propTypes = {
   wrap: PropTypes.bool.isRequired,
   clickHygge: PropTypes.func.isRequired,
   longClickHygge: PropTypes.func,
+  removeHygge: PropTypes.func,
 };
 
 export default HyggeList;

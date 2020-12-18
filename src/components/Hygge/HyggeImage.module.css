@@ -21,6 +21,29 @@
   }
 }
 
+.Remove {
+  padding: 0.2rem;
+  min-width: 1.5rem;
+  min-height: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #db5b5b;
+  background-color: var(--warning);
+  opacity: 0;
+  border-radius: 50%;
+  color: #f6f6f6;
+  color: var(--text-light);
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.5s ease;
+}
+
+.HyggeImage:hover .Remove,
+.HyggeImage:active .Remove {
+  opacity: 1;
+}
+
 .Small {
   width: 30vw;
   height: 30vw;

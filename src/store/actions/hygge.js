@@ -31,7 +31,7 @@ export const saveNewHygge = (image, attribution, category) => {
   return async (dispatch, getState) => {
     const { allHygge } = getState().hygge;
     const allIds = allHygge.map((hygge) => hygge.id);
-    const newId = Math.max.apply(null, allIds) + 1;
+    const newId = allIds.length > 0 ? Math.max.apply(null, allIds) + 1 : 1;
     const updatedHygge = [
       ...allHygge,
       {
@@ -41,6 +41,18 @@ export const saveNewHygge = (image, attribution, category) => {
         category: category,
       },
     ];
+
+    await db.table(TABLE_NAMES.images).clear();
+    await db.table(TABLE_NAMES.images).bulkAdd(updatedHygge);
+
+    dispatch(setAllHygge(updatedHygge));
+  };
+};
+
+export const removeHygge = (id) => {
+  return async (dispatch, getState) => {
+    const { allHygge } = getState().hygge;
+    const updatedHygge = allHygge.filter((hg) => hg.id !== id);
 
     await db.table(TABLE_NAMES.images).clear();
     await db.table(TABLE_NAMES.images).bulkAdd(updatedHygge);

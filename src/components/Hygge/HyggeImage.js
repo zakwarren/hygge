@@ -6,6 +6,7 @@ import { useLongPress } from "../../hooks/useLongPress";
 
 const HyggeImage = (props) => {
   const {
+    id,
     image,
     attribution,
     display,
@@ -14,6 +15,7 @@ const HyggeImage = (props) => {
     isSmall,
     clicked,
     longClicked,
+    removeHygge,
   } = props;
 
   const clickEvents = useLongPress(longClicked, clicked, {
@@ -38,11 +40,27 @@ const HyggeImage = (props) => {
   }
 
   return (
-    <div className={classes.join(" ")} {...clickHandler}>
-      <img className={imgClasses.join(" ")} src={image} alt={attribution} />
+    <div className={classes.join(" ")}>
+      <img
+        className={imgClasses.join(" ")}
+        src={image}
+        alt={attribution}
+        {...clickHandler}
+      />
       {isExpanded ? (
         <span className={css.Attribution}>{attribution}</span>
       ) : null}
+      {isExpanded || !removeHygge ? null : (
+        <span
+          className={css.Remove}
+          onClick={(event) => {
+            event.stopPropagation();
+            removeHygge(id);
+          }}
+        >
+          X
+        </span>
+      )}
     </div>
   );
 };
@@ -57,6 +75,7 @@ HyggeImage.propTypes = {
   isSmall: PropTypes.bool.isRequired,
   clicked: PropTypes.func.isRequired,
   longClicked: PropTypes.func,
+  removeHygge: PropTypes.func,
 };
 
 export default HyggeImage;

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import css from "./Category.module.css";
-import { CREATE } from "../../shared/categories";
+import { CREATE, ALL } from "../../shared/categories";
 
 const Category = ({ name, color, collection, onClick, removeCategory }) => (
   <div
@@ -16,7 +16,7 @@ const Category = ({ name, color, collection, onClick, removeCategory }) => (
     {name === CREATE.name ? null : (
       <div className={css.Value}>x {collection.length}</div>
     )}
-    {name === CREATE.name ? null : (
+    {[CREATE.name, ALL.name].includes(name) ? null : (
       <span
         className={css.Remove}
         onClick={(event) => {
