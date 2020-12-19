@@ -14,6 +14,7 @@ export const Category = (props) => {
     match,
     collection,
     selectedIds,
+    categories,
     onSaveSelection,
     onSetCollection,
     onRemoveHygge,
@@ -54,10 +55,13 @@ export const Category = (props) => {
 
   let render = <Redirect to="/collection" />;
   if (collection) {
+    const backingStyle = {
+      backgroundColor: categories[match.params.category.toLowerCase()].color,
+    };
     render = (
       <main className={css.Category}>
         <Heading headerText={match.params.category} hasExpanded={hasExpanded} />
-        <div className={css.Backing}></div>
+        <div className={css.Backing} style={backingStyle}></div>
         <HyggeList
           list={listWithSelected}
           wrap={true}
@@ -79,6 +83,12 @@ Category.propTypes = {
   }).isRequired,
   collection: PropTypes.array,
   selectedIds: PropTypes.array,
+  categories: PropTypes.objectOf(
+    PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+    })
+  ),
   onSaveSelection: PropTypes.func.isRequired,
   onSetCollection: PropTypes.func.isRequired,
   onRemoveHygge: PropTypes.func.isRequired,
@@ -88,6 +98,7 @@ export const mapStateToProps = (state) => {
   return {
     collection: state.hygge.collection,
     selectedIds: state.hygge.selectedIds,
+    categories: state.hygge.categories,
   };
 };
 

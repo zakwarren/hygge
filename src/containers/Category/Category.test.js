@@ -12,6 +12,7 @@ describe("<Category />", () => {
       const hygge = {
         collection: [],
         selectedIds: [],
+        categories: {},
       };
       const appState = { hygge: hygge };
       const componentState = mapStateToProps(appState);
@@ -38,6 +39,7 @@ describe("<Category />", () => {
       { id: 2, category: "test 2" },
     ];
     const selectedIds = [1];
+    const categories = { test: { name: "test", color: "test" } };
     const onSaveSelection = jest.fn;
     const onSetCollection = jest.fn;
     const onRemoveHygge = jest.fn;
@@ -49,6 +51,7 @@ describe("<Category />", () => {
             match,
             collection: allHygge,
             selectedIds,
+            categories,
             onSaveSelection,
             onSetCollection,
             onRemoveHygge,
