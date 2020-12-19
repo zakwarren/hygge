@@ -6,11 +6,13 @@ import { Redirect } from "react-router-dom";
 import css from "./Category.module.css";
 import * as actions from "../../store/actions/index";
 import { expandHygge } from "../../shared/utilities";
+import { ALL } from "../../shared/categories";
 import Heading from "../../components/Heading/Heading";
 import HyggeList from "../../components/Hygge/HyggeList";
 
 export const Category = (props) => {
   const {
+    history,
     match,
     collection,
     selectedIds,
@@ -46,6 +48,8 @@ export const Category = (props) => {
     onSetCollection(newCollection);
   };
 
+  const goBack = () => history.push("/collection");
+
   const listWithSelected = collection
     ? collection.map((map) => {
         const selected = selectedIds && selectedIds.includes(map.id);
@@ -55,13 +59,18 @@ export const Category = (props) => {
 
   let render = <Redirect to="/collection" />;
   if (collection) {
+    const cat = categories[match.params.category.toLowerCase()];
     const backingStyle = {
-      backgroundColor: categories[match.params.category.toLowerCase()].color,
+      backgroundColor: cat ? cat.color : ALL.color,
     };
+
     render = (
       <main className={css.Category}>
         <Heading headerText={match.params.category} hasExpanded={hasExpanded} />
         <div className={css.Backing} style={backingStyle}></div>
+        <span className={css.BackButton} onClick={goBack}>
+          &#9001;
+        </span>
         <HyggeList
           list={listWithSelected}
           wrap={true}
@@ -77,6 +86,9 @@ export const Category = (props) => {
 };
 
 Category.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
   match: PropTypes.shape({
     params: PropTypes.shape({ category: PropTypes.string.isRequired })
       .isRequired,

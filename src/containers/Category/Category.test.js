@@ -33,6 +33,7 @@ describe("<Category />", () => {
 
   describe("display", () => {
     let wrapper;
+    const history = { push: jest.fn };
     const match = { params: { category: "Test" } };
     const allHygge = [
       { id: 1, category: "test" },
@@ -48,6 +49,7 @@ describe("<Category />", () => {
       wrapper = shallow(
         <Category
           {...{
+            history,
             match,
             collection: allHygge,
             selectedIds,
@@ -78,6 +80,14 @@ describe("<Category />", () => {
 
       expect(div).toHaveLength(1);
       expect(div.hasClass(css.Backing)).toEqual(true);
+    });
+
+    it("should render a <span /> element with the correct class and text", () => {
+      const span = wrapper.find("span");
+
+      expect(span).toHaveLength(1);
+      expect(span.hasClass(css.BackButton)).toEqual(true);
+      expect(span.text()).toEqual("〈");
     });
 
     it("should render a <HyggeList /> element", () => {
