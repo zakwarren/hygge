@@ -1,6 +1,5 @@
 import * as actionTypes from "./actionTypes";
 import * as actions from "./hygge";
-import { CATEGORIES } from "../../shared/categories";
 
 describe("hygge actions", () => {
   it("should return set all hygge", () => {
