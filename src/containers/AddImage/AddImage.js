@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
@@ -10,10 +10,40 @@ import * as actions from "../../store/actions/index";
 export const AddImage = (props) => {
   const { history, categories, onSaveNewHygge } = props;
   const imgRef = useRef();
+  const [canUseCamera, setCanUseCamera] = useState();
+
+  useEffect(() => {
+    const getCameras = async () => {
+      try {
+        const cameras = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
+        if (cameras) {
+          setCanUseCamera(true);
+        }
+      } catch (error) {
+        setCanUseCamera(false);
+      }
+    };
+    getCameras();
+  }, []);
 
   if (!categories) {
     return null;
   }
+
+  const getPicture = (takePhoto) => {
+    const imgInput = document.getElementById("image");
+    if (canUseCamera && takePhoto) {
+      imgInput.capture = true;
+    } else {
+      imgInput.removeAttribute("capture");
+    }
+
+    if (imgInput) {
+      imgInput.click();
+    }
+  };
 
   const catKeys = Object.keys(categories);
   const catArray = catKeys.map((cat) => categories[cat].name);
@@ -63,12 +93,28 @@ export const AddImage = (props) => {
                 </label>
                 <Field
                   className={css.Input}
+                  style={{ display: "none" }}
                   type="file"
                   accept="image/*"
                   id="image"
                   name="image"
-                  capture
                 />
+                {canUseCamera && (
+                  <button
+                    className={css.Button}
+                    type="button"
+                    onClick={() => getPicture(true)}
+                  >
+                    Take Photo
+                  </button>
+                )}
+                <button
+                  className={css.Button}
+                  type="button"
+                  onClick={() => getPicture(false)}
+                >
+                  Select Picture
+                </button>
                 {errors.name && touched.name ? (
                   <div className={css.ValidationError}>{errors.image}</div>
                 ) : null}
