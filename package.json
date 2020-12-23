@@ -2,7 +2,7 @@
   "name": "hygge",
   "description": "Embrace a mood of coziness and comfortable conviviality with feelings of wellness and contentment",
   "homepage": "http://zakwarren.github.io/hygge",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "dexie": "^3.0.3",
