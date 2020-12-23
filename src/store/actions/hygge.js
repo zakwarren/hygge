@@ -3,8 +3,7 @@ import { filterImages, IMAGE_MAPPING } from "../../shared/images";
 import { RANDOM, CATEGORIES } from "../../shared/categories";
 import db, { TABLE_NAMES } from "../db";
 
-export const STORED_SELECTION = "myHygge";
-export const STORED_CATEGORIES = "myCategories";
+const STORED_SELECTION = "myHygge";
 
 export const setAllHygge = (imageMapping) => {
   return {
