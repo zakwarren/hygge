@@ -11,9 +11,9 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import hyggeReducer from "./store/reducers/hygge";
 
 const composeEnhancers =
-  process.env.NODE_ENV === "development"
+  (process.env.NODE_ENV === "development"
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : null || compose;
+    : null) || compose;
 
 const rootReducer = combineReducers({
   hygge: hyggeReducer,
