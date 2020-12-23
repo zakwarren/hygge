@@ -1,0 +1,55 @@
+.Modal {
+  padding: auto;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgb(222, 220, 218);
+  background-color: rgba(222, 220, 218, 0.9);
+  background-color: var(--overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Content {
+  margin: auto;
+  padding: 1.25rem;
+  width: 90%;
+  background-color: #3a3a3a;
+  background-color: var(--background-dark);
+  border-color: var(--main);
+  border-radius: 1.25rem;
+  color: #f6f6f6;
+  color: var(--text-light);
+}
+
+@media (min-width: 500px) {
+  .Content {
+    width: 60%;
+  }
+}
+
+@media (min-width: 750px) {
+  .Content {
+    width: 40%;
+  }
+}
+
+.Close {
+  color: #f6f6f6;
+  color: var(--text-light);
+  font-size: 2rem;
+  float: right;
+  transition: color 0.3s ease;
+}
+
+.Close:hover,
+.Close:focus {
+  color: #c4a589;
+  color: var(--dark);
+  text-decoration: none;
+  cursor: pointer;
+}
