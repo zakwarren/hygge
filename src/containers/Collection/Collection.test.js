@@ -5,17 +5,24 @@ import css from "./Collection.module.css";
 import { Collection, mapStateToProps, mapDispatchToProps } from "./Collection";
 import CategoryList from "../../components/Collection/CategoryList";
 import Heading from "../../components/Heading/Heading";
+import Modal from "../../components/Modal/Modal";
 
 describe("<Collection />", () => {
   describe("mapStateToProps", () => {
     it("should map the state to props correctly", () => {
+      const app = {
+        routesHelped: {},
+      };
       const hygge = {
         allHygge: [],
+        Categories: {},
       };
-      const appState = { hygge: hygge };
+      const appState = { app: app, hygge: hygge };
       const componentState = mapStateToProps(appState);
 
-      expect(componentState).toEqual(hygge);
+      expect(componentState.needsHelp).toEqual(true);
+      expect(componentState.allHygge).toEqual(hygge.allHygge);
+      expect(componentState.categories).toEqual(hygge.categories);
     });
   });
 
@@ -23,6 +30,7 @@ describe("<Collection />", () => {
     it("should map the dispatch functions to props correctly", () => {
       const componentDispatch = mapDispatchToProps(jest.fn);
 
+      expect(typeof componentDispatch.onHadHelp).toBe("function");
       expect(typeof componentDispatch.onSetCollection).toBe("function");
       expect(typeof componentDispatch.onSaveCategories).toBe("function");
     });
@@ -31,8 +39,10 @@ describe("<Collection />", () => {
   describe("display", () => {
     let wrapper;
     const history = { push: jest.fn };
+    const needsHelp = false;
     const allHygge = [{ category: "test" }];
     const categories = { test: { name: "test", color: "#ffffff" } };
+    const onHadHelp = jest.fn;
     const onSetCollection = jest.fn;
     const onSaveCategories = jest.fn;
 
@@ -41,8 +51,10 @@ describe("<Collection />", () => {
         <Collection
           {...{
             history,
+            needsHelp,
             allHygge,
             categories,
+            onHadHelp,
             onSetCollection,
             onSaveCategories,
           }}
@@ -80,6 +92,13 @@ describe("<Collection />", () => {
       const cat = wrapper.find(CategoryList);
 
       expect(cat).toHaveLength(1);
+    });
+
+    it("should render a <Modal /> element if needsHelp is true", () => {
+      wrapper.setProps({ needsHelp: true });
+      const modal = wrapper.find(Modal);
+
+      expect(modal).toHaveLength(1);
     });
   });
 });

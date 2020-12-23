@@ -8,12 +8,16 @@ import { ALL, CREATE } from "../../shared/categories";
 import { filterImages } from "../../shared/images";
 import CategoryList from "../../components/Collection/CategoryList";
 import Heading from "../../components/Heading/Heading";
+import Modal from "../../components/Modal/Modal";
+import hand from "./hand.svg";
 
 export const Collection = (props) => {
   const {
     history,
+    needsHelp,
     allHygge,
     categories,
+    onHadHelp,
     onSetCollection,
     onSaveCategories,
   } = props;
@@ -21,6 +25,30 @@ export const Collection = (props) => {
   if (!categories || !allHygge) {
     return null;
   }
+
+  const helpContent = needsHelp ? (
+    <div className={css.Column}>
+      <div className={css.Row}>
+        <div className={css.Cell}>
+          <div className={css.Circle} />
+          <img className={css.Hand} src={hand} alt="hand" />
+        </div>
+        <div className={css.Cell}>
+          <p>Tap to zoom</p>
+        </div>
+      </div>
+      <div className={css.Row}>
+        <div className={css.Cell}>
+          <div className={`${css.Circle} ${css.Filled}`} />
+          <img className={css.Hand} src={hand} alt="hand" />
+        </div>
+        <div className={css.Cell}>
+          <p className={css.Bold}>Tap and hold</p>
+          <p>to add to board</p>
+        </div>
+      </div>
+    </div>
+  ) : null;
 
   const setCategory = (category) => {
     const newCollection = filterImages(allHygge, category);
@@ -64,12 +92,14 @@ export const Collection = (props) => {
       <section className={css.Categories}>
         <CategoryList list={mappedCats} removeCategory={removeCategory} />
       </section>
+      {needsHelp && <Modal closeFn={onHadHelp}>{helpContent}</Modal>}
     </main>
   );
 };
 
 Collection.propTypes = {
   history: PropTypes.object.isRequired,
+  needsHelp: PropTypes.bool.isRequired,
   allHygge: PropTypes.array,
   categories: PropTypes.objectOf(
     PropTypes.exact({
@@ -77,12 +107,14 @@ Collection.propTypes = {
       color: PropTypes.string.isRequired,
     })
   ),
+  onHadHelp: PropTypes.func.isRequired,
   onSetCollection: PropTypes.func.isRequired,
   onSaveCategories: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
   return {
+    needsHelp: !state.app.routesHelped?.collection,
     allHygge: state.hygge.allHygge,
     categories: state.hygge.categories,
   };
@@ -90,6 +122,7 @@ export const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
   return {
+    onHadHelp: () => dispatch(actions.setNeedsHelp("collection")),
     onSetCollection: (newCollection) =>
       dispatch(actions.setCollection(newCollection)),
     onSaveCategories: (newCategories) =>

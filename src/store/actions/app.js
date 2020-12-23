@@ -4,7 +4,7 @@ export const STORED_HELP = "isHelped";
 
 export const getNeedsHelp = () => {
   const storedHelp = localStorage.getItem(STORED_HELP);
-  const routesHelped = storedHelp ? JSON.parse(storedHelp) : null;
+  const routesHelped = storedHelp ? JSON.parse(storedHelp) : {};
   return {
     type: actionTypes.SET_NEEDS_HELP,
     routesHelped: routesHelped,
