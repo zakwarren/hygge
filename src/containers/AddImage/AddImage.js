@@ -67,6 +67,7 @@ export const AddImage = (props) => {
                   accept="image/*"
                   id="image"
                   name="image"
+                  capture
                 />
                 {errors.name && touched.name ? (
                   <div className={css.ValidationError}>{errors.image}</div>
