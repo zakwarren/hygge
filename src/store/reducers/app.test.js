@@ -3,8 +3,7 @@ import reducer from "./app";
 
 describe("hygge reducer", () => {
   const initialState = {
-    isOpen: false,
-    content: null,
+    routesHelped: {},
   };
 
   it("should return the initial state when invalid type", () => {
@@ -13,21 +12,13 @@ describe("hygge reducer", () => {
     expect(newState).toEqual(initialState);
   });
 
-  it("should set isOpen to true and content", () => {
-    const content = "test";
+  it("should set routesHelped", () => {
+    const routesHelped = { test: "test" };
     const newState = reducer(initialState, {
-      type: actionTypes.OPEN_MODAL,
-      content: content,
+      type: actionTypes.SET_NEEDS_HELP,
+      routesHelped: routesHelped,
     });
 
-    expect(newState.isOpen).toEqual(true);
-    expect(newState.content).toEqual(content);
-  });
-
-  it("should set isOpen to false and clear content", () => {
-    const newState = reducer(initialState, { type: actionTypes.CLOSE_MODAL });
-
-    expect(newState.isOpen).toEqual(false);
-    expect(newState.content).toBeNull();
+    expect(newState.routesHelped).toEqual(routesHelped);
   });
 });

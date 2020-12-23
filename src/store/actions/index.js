@@ -1,3 +1,4 @@
+export { getNeedsHelp, setNeedsHelp } from "./app";
 export {
   setAllHygge,
   getAllHygge,

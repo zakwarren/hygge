@@ -2,17 +2,18 @@ import * as actionTypes from "./actionTypes";
 import * as actions from "./app";
 
 describe("app actions", () => {
-  it("should return open modal and content", () => {
-    const content = "test";
-    const act = actions.openModal(content);
+  it("should return set needs help and saved routes helped", () => {
+    const act = actions.getNeedsHelp();
 
-    expect(act.type).toEqual(actionTypes.OPEN_MODAL);
-    expect(act.content).toEqual(content);
+    expect(act.type).toEqual(actionTypes.SET_NEEDS_HELP);
+    expect(act.routesHelped).toEqual({});
   });
 
-  it("should return close modal", () => {
-    const act = actions.closeModal();
+  it("should return set needs help and the routes helped", () => {
+    const routesHelped = { test: "a different test" };
+    const act = actions.setRoutesHelped(routesHelped);
 
-    expect(act.type).toEqual(actionTypes.CLOSE_MODAL);
+    expect(act.type).toEqual(actionTypes.SET_NEEDS_HELP);
+    expect(act.routesHelped).toEqual(routesHelped);
   });
 });
