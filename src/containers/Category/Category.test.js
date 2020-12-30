@@ -5,6 +5,7 @@ import css from "./Category.module.css";
 import { Category, mapStateToProps, mapDispatchToProps } from "./Category";
 import Heading from "../../components/Heading/Heading";
 import HyggeList from "../../components/Hygge/HyggeList";
+import BackButton from "../../components/BackButton/BackButton";
 
 describe("<Category />", () => {
   describe("mapStateToProps", () => {
@@ -82,18 +83,16 @@ describe("<Category />", () => {
       expect(div.hasClass(css.Backing)).toEqual(true);
     });
 
-    it("should render a <span /> element with the correct class and text", () => {
-      const span = wrapper.find("span");
-
-      expect(span).toHaveLength(1);
-      expect(span.hasClass(css.BackButton)).toEqual(true);
-      expect(span.text()).toEqual("〈");
-    });
-
     it("should render a <HyggeList /> element", () => {
       const hygge = wrapper.find(HyggeList);
 
       expect(hygge).toHaveLength(1);
+    });
+
+    it("should render a <BackButton /> element", () => {
+      const span = wrapper.find(BackButton);
+
+      expect(span).toHaveLength(1);
     });
   });
 });

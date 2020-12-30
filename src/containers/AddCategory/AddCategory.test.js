@@ -8,6 +8,7 @@ import {
   mapDispatchToProps,
 } from "./AddCategory";
 import { Formik } from "formik";
+import BackButton from "../../components/BackButton/BackButton";
 
 describe("<AddCategory />", () => {
   describe("mapStateToProps", () => {
@@ -55,6 +56,12 @@ describe("<AddCategory />", () => {
       expect(h1).toHaveLength(1);
       expect(h1.hasClass(css.Heading)).toEqual(true);
       expect(h1.text()).toEqual("Add Collection");
+    });
+
+    it("should render a <BackButton /> element", () => {
+      const bb = wrapper.find(BackButton);
+
+      expect(bb).toHaveLength(1);
     });
 
     it("should render a <Form /> element", () => {

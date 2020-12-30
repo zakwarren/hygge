@@ -6,6 +6,7 @@ import * as yup from "yup";
 
 import css from "./AddCategory.module.css";
 import * as actions from "../../store/actions/index";
+import BackButton from "../../components/BackButton/BackButton";
 
 export const AddCategory = (props) => {
   const { history, categories, onSaveCategories } = props;
@@ -24,9 +25,12 @@ export const AddCategory = (props) => {
     history.push("/collection");
   };
 
+  const goBack = () => history.push("/collection");
+
   return (
     <section className={css.Container}>
       <h1 className={css.Heading}>Add Collection</h1>
+      <BackButton onClick={goBack} />
       <Formik {...{ initialValues, validationSchema, onSubmit }}>
         {({ errors, touched }) => {
           const errLength = Object.keys(errors).length;

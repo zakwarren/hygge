@@ -9,6 +9,7 @@ import { expandHygge } from "../../shared/utilities";
 import { ALL } from "../../shared/categories";
 import Heading from "../../components/Heading/Heading";
 import HyggeList from "../../components/Hygge/HyggeList";
+import BackButton from "../../components/BackButton/BackButton";
 
 export const Category = (props) => {
   const {
@@ -68,9 +69,7 @@ export const Category = (props) => {
       <main className={css.Category}>
         <Heading headerText={match.params.category} hasExpanded={hasExpanded} />
         <div className={css.Backing} style={backingStyle}></div>
-        <span className={css.BackButton} onClick={goBack}>
-          &#9001;
-        </span>
+        <BackButton onClick={goBack} />
         <HyggeList
           list={listWithSelected}
           wrap={true}

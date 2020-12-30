@@ -46,20 +46,3 @@
     bottom: -100%;
   }
 }
-
-.BackButton {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  color: #ded8d3;
-  color: var(--text-heading);
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.BackButton:hover {
-  color: #c4a589;
-  color: var(--dark);
-}
