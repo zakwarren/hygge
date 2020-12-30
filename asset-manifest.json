@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/hygge/static/css/main.7cfacfc3.chunk.css",
-    "main.js": "/hygge/static/js/main.b4559009.chunk.js",
-    "main.js.map": "/hygge/static/js/main.b4559009.chunk.js.map",
+    "main.css": "/hygge/static/css/main.28fefbb9.chunk.css",
+    "main.js": "/hygge/static/js/main.5d50d1ed.chunk.js",
+    "main.js.map": "/hygge/static/js/main.5d50d1ed.chunk.js.map",
     "runtime-main.js": "/hygge/static/js/runtime-main.00cbb7cf.js",
     "runtime-main.js.map": "/hygge/static/js/runtime-main.00cbb7cf.js.map",
     "static/css/2.24192d93.chunk.css": "/hygge/static/css/2.24192d93.chunk.css",
-    "static/js/2.46b9885e.chunk.js": "/hygge/static/js/2.46b9885e.chunk.js",
-    "static/js/2.46b9885e.chunk.js.map": "/hygge/static/js/2.46b9885e.chunk.js.map",
+    "static/js/2.7c2f2d0c.chunk.js": "/hygge/static/js/2.7c2f2d0c.chunk.js",
+    "static/js/2.7c2f2d0c.chunk.js.map": "/hygge/static/js/2.7c2f2d0c.chunk.js.map",
     "index.html": "/hygge/index.html",
     "service-worker.js": "/hygge/service-worker.js",
     "service-worker.js.map": "/hygge/service-worker.js.map",
     "static/css/2.24192d93.chunk.css.map": "/hygge/static/css/2.24192d93.chunk.css.map",
-    "static/css/main.7cfacfc3.chunk.css.map": "/hygge/static/css/main.7cfacfc3.chunk.css.map",
-    "static/js/2.46b9885e.chunk.js.LICENSE.txt": "/hygge/static/js/2.46b9885e.chunk.js.LICENSE.txt",
+    "static/css/main.28fefbb9.chunk.css.map": "/hygge/static/css/main.28fefbb9.chunk.css.map",
+    "static/js/2.7c2f2d0c.chunk.js.LICENSE.txt": "/hygge/static/js/2.7c2f2d0c.chunk.js.LICENSE.txt",
     "static/media/aditya-vyas-PzhmEp_aDU4-unsplash.612f23e0.jpg": "/hygge/static/media/aditya-vyas-PzhmEp_aDU4-unsplash.612f23e0.jpg",
     "static/media/annie-spratt-OQj0chxpZOI-unsplash.95aef95b.jpg": "/hygge/static/media/annie-spratt-OQj0chxpZOI-unsplash.95aef95b.jpg",
     "static/media/clay-banks-z_DkoUqgx6M-unsplash.76cd620b.jpg": "/hygge/static/media/clay-banks-z_DkoUqgx6M-unsplash.76cd620b.jpg",
     "static/media/emily-toycen-jd_YFWRkOqQ-unsplash.94656feb.jpg": "/hygge/static/media/emily-toycen-jd_YFWRkOqQ-unsplash.94656feb.jpg",
-    "static/media/hand.3df959b8.svg": "/hygge/static/media/hand.3df959b8.svg",
+    "static/media/hand.991e5633.svg": "/hygge/static/media/hand.991e5633.svg",
     "static/media/john-noonan-E-9CFTftQh4-unsplash.498b4ca3.jpg": "/hygge/static/media/john-noonan-E-9CFTftQh4-unsplash.498b4ca3.jpg",
     "static/media/jyrki-sorjonen-WnWwzDxvA2M-unsplash.f84e3c7c.jpg": "/hygge/static/media/jyrki-sorjonen-WnWwzDxvA2M-unsplash.f84e3c7c.jpg",
     "static/media/olivier-guillard-FKJgBUDoVC0-unsplash.4b219741.jpg": "/hygge/static/media/olivier-guillard-FKJgBUDoVC0-unsplash.4b219741.jpg",
@@ -29,8 +29,8 @@
   "entrypoints": [
     "static/js/runtime-main.00cbb7cf.js",
     "static/css/2.24192d93.chunk.css",
-    "static/js/2.46b9885e.chunk.js",
-    "static/css/main.7cfacfc3.chunk.css",
-    "static/js/main.b4559009.chunk.js"
+    "static/js/2.7c2f2d0c.chunk.js",
+    "static/css/main.28fefbb9.chunk.css",
+    "static/js/main.5d50d1ed.chunk.js"
   ]
 }
