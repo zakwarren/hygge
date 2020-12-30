@@ -6,6 +6,7 @@ import * as yup from "yup";
 
 import css from "./AddImage.module.css";
 import * as actions from "../../store/actions/index";
+import BackButton from "../../components/BackButton/BackButton";
 
 export const AddImage = (props) => {
   const { history, categories, onSaveNewHygge } = props;
@@ -80,6 +81,7 @@ export const AddImage = (props) => {
   return (
     <section className={css.Container}>
       <h1 className={css.Heading}>Add Hygge Image</h1>
+      <BackButton onClick={history.goBack} />
       <Formik {...{ initialValues, validationSchema, onSubmit }}>
         {({ errors, touched }) => {
           const errLength = Object.keys(errors).length;

@@ -3,7 +3,7 @@
   width: 4rem;
   height: 4rem;
   position: fixed;
-  top: 95vh;
+  top: 90vh;
   left: 5vw;
   z-index: 100;
   background-color: #e4d6c9;
@@ -23,12 +23,6 @@
   background-color: var(--dark);
 }
 
-@media (min-width: 500px) {
-  .Menu {
-    top: 90vh;
-  }
-}
-
 .Menu p {
   color: #f6f6f6;
   color: var(--text-light);
@@ -41,8 +35,8 @@
   width: 80vh;
   height: 80vh;
   position: absolute;
-  bottom: -10%;
-  left: -25%;
+  top: 20vh;
+  left: -25vw;
   background-color: #f3eae2;
   background-color: var(--light);
   box-shadow: 0.25rem 0 0.25rem #c3a58930, 0 0.25rem 0.6rem #86827f3b;
@@ -55,7 +49,7 @@
 
 @media (min-width: 500px) {
   .Open {
-    bottom: 0;
+    top: 10vh;
     left: 0;
   }
 }
