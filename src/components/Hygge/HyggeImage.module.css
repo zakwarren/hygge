@@ -51,22 +51,10 @@
   border-radius: 50%;
 }
 
-.Small:nth-child(4n + 1) {
-  margin-left: 10vw;
-}
-
 @media (min-width: 750px) {
   .Small {
     width: 15vh;
     height: 15vh;
-  }
-
-  .Small:nth-child(4n + 1) {
-    margin-left: 0;
-  }
-
-  .Small:first-of-type {
-    margin-left: 10vw;
   }
 }
 

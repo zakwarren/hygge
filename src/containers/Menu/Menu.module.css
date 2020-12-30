@@ -3,8 +3,8 @@
   width: 4rem;
   height: 4rem;
   position: fixed;
-  bottom: 5%;
-  left: 5%;
+  top: 95vh;
+  left: 5vw;
   z-index: 100;
   background-color: #e4d6c9;
   background-color: var(--main);
@@ -21,6 +21,12 @@
 .Menu:hover {
   background-color: #c4a589;
   background-color: var(--dark);
+}
+
+@media (min-width: 500px) {
+  .Menu {
+    top: 90vh;
+  }
 }
 
 .Menu p {
