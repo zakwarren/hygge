@@ -29,6 +29,7 @@
 }
 
 .Column {
+  padding: 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -53,25 +54,25 @@
 }
 
 .Circle {
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   position: absolute;
-  top: 0;
-  left: 0;
-  border: 0.12rem solid #f6f6f6;
-  border-color: var(--text-light);
+  top: 0rem;
+  left: 25%;
+  border: 0.24rem solid #c4c4c4;
+  border-color: var(--grey);
   border-radius: 50%;
 }
 
 .Filled {
-  background-color: #f6f6f6;
-  background-color: var(--text-light);
+  background-color: #c4c4c4;
+  background-color: var(--grey);
 }
 
 .Hand {
   position: absolute;
-  top: 2rem;
-  left: 1rem;
+  top: 1.5rem;
+  left: 32%;
 }
 
 .Bold {

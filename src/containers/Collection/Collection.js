@@ -34,7 +34,9 @@ export const Collection = (props) => {
           <img className={css.Hand} src={hand} alt="hand" />
         </div>
         <div className={css.Cell}>
-          <p>Tap to zoom</p>
+          <p>
+            <span className={css.Bold}>Tap</span> to zoom
+          </p>
         </div>
       </div>
       <div className={css.Row}>
