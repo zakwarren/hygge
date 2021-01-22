@@ -99,11 +99,14 @@
 }
 
 .Circle.Selected {
-  box-shadow: 0 0 0.9rem #34b91359, 0 0.25rem 1.25rem #86827f59;
+  border: 0.25rem solid #13cc52;
+  box-shadow: -0.25rem -0.25rem 0.5rem #34b91359,
+    0.25rem 0.25rem 1.125rem #34b91399, 0 0.25rem 1.25rem #86827f59;
 }
 
 .Circle.Selected:hover {
-  box-shadow: 0 0 0.9rem #39c916b0, 0 0.25rem 1.25rem #86827fb0;
+  box-shadow: -0.25rem -0.25rem 0.5rem #34b91359,
+    0.25rem 0.25rem 1.125rem #34b91399, 0 0.25rem 1.25rem #86827f59;
 }
 
 .Attribution {
