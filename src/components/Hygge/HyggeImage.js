@@ -1,10 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import ReactTooltip from "react-tooltip";
 
 import css from "./HyggeImage.module.css";
+import { getSelectedCount } from "../../store/selectors/hygge";
 import { useLongPress } from "../../hooks/useLongPress";
 
-const HyggeImage = (props) => {
+export const HyggeImage = (props) => {
   const {
     id,
     image,
@@ -16,6 +19,7 @@ const HyggeImage = (props) => {
     clicked,
     longClicked,
     removeHygge,
+    totalSelected,
   } = props;
 
   const clickEvents = useLongPress(longClicked, clicked, {
@@ -35,12 +39,17 @@ const HyggeImage = (props) => {
   }
 
   const imgClasses = [css.Circle];
+  const divProps = {};
   if (isSelected) {
     imgClasses.push(css.Selected);
+
+    const hyggePlural = totalSelected === 1 ? "image" : "images";
+    divProps["data-tip"] = `${totalSelected} ${hyggePlural} selected`;
+    divProps["data-for"] = `${id}Tip`;
   }
 
   return (
-    <div className={classes.join(" ")}>
+    <div className={classes.join(" ")} {...divProps}>
       <img
         className={imgClasses.join(" ")}
         src={image}
@@ -61,6 +70,16 @@ const HyggeImage = (props) => {
           X
         </span>
       )}
+      {isSelected && (
+        <ReactTooltip
+          id={`${id}Tip`}
+          place="top"
+          type="dark"
+          effect="solid"
+          event="click"
+          eventOff="mouseleave"
+        />
+      )}
     </div>
   );
 };
@@ -76,6 +95,13 @@ HyggeImage.propTypes = {
   clicked: PropTypes.func.isRequired,
   longClicked: PropTypes.func,
   removeHygge: PropTypes.func,
+  totalSelected: PropTypes.number.isRequired,
 };
 
-export default HyggeImage;
+export const mapStateToProps = (state) => {
+  return {
+    totalSelected: getSelectedCount(state),
+  };
+};
+
+export default connect(mapStateToProps)(HyggeImage);
