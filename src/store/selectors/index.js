@@ -1,1 +1,0 @@
-export { getSelectedCount } from "./hygge";

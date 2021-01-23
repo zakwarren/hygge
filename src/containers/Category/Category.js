@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import css from "./Category.module.css";
-import * as actions from "../../store/actions/index";
+import * as actions from "../../store/actions";
 import { expandHygge } from "../../shared/utilities";
 import { ALL } from "../../shared/categories";
 import Heading from "../../components/Heading/Heading";
@@ -39,6 +40,12 @@ export const Category = (props) => {
       select = selectedIds ? [...selectedIds, id] : [id];
     }
     const unique = [...new Set(select)];
+
+    const totalSelected = unique ? unique.length : 0;
+    const hyggePlural = totalSelected === 1 ? "image" : "images";
+    toast.dark(`${totalSelected} ${hyggePlural} selected`, {
+      toastId: `select-${id}`,
+    });
     onSaveSelection(unique);
   };
 

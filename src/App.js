@@ -20,7 +20,7 @@ const App = () => {
   const routes = (
     <Switch>
       <Route path="/collection/add" exact component={AddCategory} />
-      <Route path="/collection/:category" exact component={Category} />
+      <Route path="/collection/:category" component={Category} />
       <Route path="/collection" exact component={Collection} />
       <Route path="/add" exact component={AddImage} />
       <Route path="/" exact component={Hygge} />
