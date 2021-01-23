@@ -31,7 +31,6 @@ describe("<Collection />", () => {
       const componentDispatch = mapDispatchToProps(jest.fn);
 
       expect(typeof componentDispatch.onHadHelp).toBe("function");
-      expect(typeof componentDispatch.onSetCollection).toBe("function");
       expect(typeof componentDispatch.onSaveCategories).toBe("function");
     });
   });
@@ -43,7 +42,6 @@ describe("<Collection />", () => {
     const allHygge = [{ category: "test" }];
     const categories = { test: { name: "test", color: "#ffffff" } };
     const onHadHelp = jest.fn;
-    const onSetCollection = jest.fn;
     const onSaveCategories = jest.fn;
 
     beforeEach(() => {
@@ -55,7 +53,6 @@ describe("<Collection />", () => {
             allHygge,
             categories,
             onHadHelp,
-            onSetCollection,
             onSaveCategories,
           }}
         />

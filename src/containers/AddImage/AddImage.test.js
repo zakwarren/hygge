@@ -28,7 +28,7 @@ describe("<AddImage />", () => {
 
   describe("display", () => {
     let wrapper;
-    const history = { push: jest.fn };
+    const history = { push: jest.fn, goBack: jest.fn };
     const categories = { test: { name: "test", color: "#ffffff" } };
     const onSaveNewHygge = jest.fn;
 

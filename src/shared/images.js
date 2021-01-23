@@ -75,8 +75,10 @@ export const filterImages = (allImages, category, selection) => {
   if (category === RANDOM) {
     const shuffled = allImages.sort(() => 0.5 - Math.random());
     filtered = shuffled.slice(0, random_amount);
-  } else if (category && category !== ALL.name) {
-    filtered = allImages.filter((map) => map.category === category);
+  } else if (category && category !== ALL.name.toLowerCase()) {
+    filtered = allImages.filter(
+      (map) => map.category.toLowerCase() === category.toLowerCase()
+    );
   } else if (selection && selection.length > 0) {
     filtered = allImages.filter((map) => selection.includes(map.id));
   } else {

@@ -52,7 +52,7 @@ describe("<Category />", () => {
           {...{
             history,
             match,
-            collection: allHygge,
+            allHygge,
             selectedIds,
             categories,
             onSaveSelection,

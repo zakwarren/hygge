@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import css from "./Category.module.css";
 import * as actions from "../../store/actions";
+import { filterImages } from "../../shared/images";
 import { expandHygge } from "../../shared/utilities";
 import { ALL } from "../../shared/categories";
 import Heading from "../../components/Heading/Heading";
@@ -16,7 +16,7 @@ export const Category = (props) => {
   const {
     history,
     match,
-    collection,
+    allHygge,
     selectedIds,
     categories,
     onSaveSelection,
@@ -25,67 +25,76 @@ export const Category = (props) => {
   } = props;
   const [hasExpanded, setHasExpanded] = useState(false);
 
-  const clickHandler = (id) => {
-    const newCollection = expandHygge(collection, id);
-    onSetCollection(newCollection);
-    const areExpanded = newCollection.some((hg) => hg.isExpanded);
-    setHasExpanded(areExpanded);
-  };
+  const category = match.params.category.toLowerCase();
+  let render = null;
 
-  const longClickHandler = (id) => {
-    let select = [];
-    if (selectedIds && selectedIds.includes(id)) {
-      select = selectedIds.filter((selId) => selId !== id);
-    } else {
-      select = selectedIds ? [...selectedIds, id] : [id];
-    }
-    const unique = [...new Set(select)];
+  if (allHygge && allHygge.length > 0) {
+    const collection = filterImages(allHygge, category);
 
-    const totalSelected = unique ? unique.length : 0;
-    const hyggePlural = totalSelected === 1 ? "image" : "images";
-    toast.dark(`${totalSelected} ${hyggePlural} selected`, {
-      toastId: `select-${id}`,
-    });
-    onSaveSelection(unique);
-  };
-
-  const removeHygge = (id) => {
-    onRemoveHygge(id);
-
-    const newCollection = collection.filter((hg) => hg.id !== id);
-    onSetCollection(newCollection);
-  };
-
-  const goBack = () => history.push("/collection");
-
-  const listWithSelected = collection
-    ? collection.map((map) => {
-        const selected = selectedIds && selectedIds.includes(map.id);
-        return { ...map, isSelected: selected };
-      })
-    : null;
-
-  let render = <Redirect to="/collection" />;
-  if (collection) {
-    const cat = categories[match.params.category.toLowerCase()];
-    const backingStyle = {
-      backgroundColor: cat ? cat.color : ALL.color,
+    const clickHandler = (id) => {
+      const newCollection = expandHygge(collection, id);
+      onSetCollection(newCollection);
+      const areExpanded = newCollection.some((hg) => hg.isExpanded);
+      setHasExpanded(areExpanded);
     };
 
-    render = (
-      <main className={css.Category}>
-        <Heading headerText={match.params.category} hasExpanded={hasExpanded} />
-        <div className={css.Backing} style={backingStyle}></div>
-        <BackButton onClick={goBack} />
-        <HyggeList
-          list={listWithSelected}
-          wrap={true}
-          clickHygge={clickHandler}
-          longClickHygge={longClickHandler}
-          removeHygge={removeHygge}
-        />
-      </main>
-    );
+    const longClickHandler = (id) => {
+      let select = [];
+      if (selectedIds && selectedIds.includes(id)) {
+        select = selectedIds.filter((selId) => selId !== id);
+      } else {
+        select = selectedIds ? [...selectedIds, id] : [id];
+      }
+      const unique = [...new Set(select)];
+
+      const totalSelected = unique ? unique.length : 0;
+      const hyggePlural = totalSelected === 1 ? "image" : "images";
+      toast.dark(`${totalSelected} ${hyggePlural} selected`, {
+        toastId: `select-${id}`,
+      });
+      onSaveSelection(unique);
+    };
+
+    const removeHygge = (id) => {
+      onRemoveHygge(id);
+
+      const newCollection = collection.filter((hg) => hg.id !== id);
+      onSetCollection(newCollection);
+    };
+
+    const goBack = () => history.push("/collection");
+
+    const listWithSelected = collection
+      ? collection.map((map) => {
+          const selected = selectedIds && selectedIds.includes(map.id);
+          return { ...map, isSelected: selected };
+        })
+      : null;
+
+    if (collection) {
+      const cat = categories ? categories[category] : {};
+      const backingStyle = {
+        backgroundColor: cat ? cat.color : ALL.color,
+      };
+
+      render = (
+        <main className={css.Category}>
+          <Heading
+            headerText={match.params.category}
+            hasExpanded={hasExpanded}
+          />
+          <div className={css.Backing} style={backingStyle}></div>
+          <BackButton onClick={goBack} />
+          <HyggeList
+            list={listWithSelected}
+            wrap={true}
+            clickHygge={clickHandler}
+            longClickHygge={longClickHandler}
+            removeHygge={removeHygge}
+          />
+        </main>
+      );
+    }
   }
 
   return render;
@@ -99,6 +108,7 @@ Category.propTypes = {
     params: PropTypes.shape({ category: PropTypes.string.isRequired })
       .isRequired,
   }).isRequired,
+  allHygge: PropTypes.array,
   collection: PropTypes.array,
   selectedIds: PropTypes.array,
   categories: PropTypes.objectOf(
@@ -114,6 +124,7 @@ Category.propTypes = {
 
 export const mapStateToProps = (state) => {
   return {
+    allHygge: state.hygge.allHygge,
     collection: state.hygge.collection,
     selectedIds: state.hygge.selectedIds,
     categories: state.hygge.categories,

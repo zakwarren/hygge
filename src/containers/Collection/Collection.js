@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import css from "./Collection.module.css";
 import * as actions from "../../store/actions/index";
 import { ALL, CREATE } from "../../shared/categories";
-import { filterImages } from "../../shared/images";
 import CategoryList from "../../components/Collection/CategoryList";
 import Heading from "../../components/Heading/Heading";
 import Modal from "../../components/Modal/Modal";
@@ -18,7 +17,6 @@ export const Collection = (props) => {
     allHygge,
     categories,
     onHadHelp,
-    onSetCollection,
     onSaveCategories,
   } = props;
 
@@ -53,8 +51,6 @@ export const Collection = (props) => {
   ) : null;
 
   const setCategory = (category) => {
-    const newCollection = filterImages(allHygge, category);
-    onSetCollection(newCollection);
     history.push(`/collection/${category}`);
   };
 
@@ -110,7 +106,6 @@ Collection.propTypes = {
     })
   ),
   onHadHelp: PropTypes.func.isRequired,
-  onSetCollection: PropTypes.func.isRequired,
   onSaveCategories: PropTypes.func.isRequired,
 };
 
@@ -125,8 +120,6 @@ export const mapStateToProps = (state) => {
 export const mapDispatchToProps = (dispatch) => {
   return {
     onHadHelp: () => dispatch(actions.setNeedsHelp("collection")),
-    onSetCollection: (newCollection) =>
-      dispatch(actions.setCollection(newCollection)),
     onSaveCategories: (newCategories) =>
       dispatch(actions.saveCategories(newCategories)),
   };
