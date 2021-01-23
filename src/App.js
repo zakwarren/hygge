@@ -34,6 +34,7 @@ const App = () => {
       <img className={css.Logo} src={logo} alt="Logo" />
       {routes}
       <ToastContainer
+        className={css.Toastit}
         position="bottom-center"
         autoClose={5000}
         hideProgressBar

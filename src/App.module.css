@@ -12,3 +12,8 @@
     right: 10%;
   }
 }
+
+.Toastit {
+  position: fixed;
+  bottom: 10vh;
+}
